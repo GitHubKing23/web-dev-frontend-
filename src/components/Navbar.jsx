@@ -1,37 +1,46 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-function Navbar() {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Blog', href: '#blog' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', to: '/' },
+    { label: 'Projects', to: '/projects' },
+    { label: 'Services', to: '/services' },
+    { label: 'About', to: '/about' },
+    { label: 'Blog', to: '/blog' },
+    { label: 'Contact', to: '/contact' },
   ];
+
+  const linkClasses = (path) =>
+    `text-text hover:text-accent font-medium transition-colors duration-200 ${
+      location.pathname === path ? 'text-primary font-bold' : ''
+    }`;
 
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 z-50 font-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16 items-center">
-        <div className="text-2xl font-bold text-primary tracking-wide">
+        <Link to="/" className="text-2xl font-bold text-primary tracking-wide">
           WebMasteryPro
-        </div>
+        </Link>
+
+        {/* Desktop links */}
         <div className="hidden md:flex space-x-6">
-          {navLinks.map(link => (
-            <a key={link.label} href={link.href} className="text-text hover:text-accent transition-colors duration-200 font-medium">
+          {navLinks.map((link) => (
+            <Link key={link.label} to={link.to} className={linkClasses(link.to)}>
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
-        <div className="hidden md:block">
-          <a href="#signup" className="bg-primary text-white px-5 py-2 rounded-full hover:bg-accent transition">
-            Sign Up
-          </a>
-        </div>
+
+        {/* Mobile menu toggle */}
         <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-text focus:outline-none">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-text focus:outline-none"
+          >
             <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -43,20 +52,21 @@ function Navbar() {
         </div>
       </div>
 
+      {/* Mobile dropdown */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-md px-4 pt-2 pb-4 space-y-2">
-          {navLinks.map(link => (
-            <a key={link.label} href={link.href} className="block text-text hover:text-accent font-medium transition">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              to={link.to}
+              className="block text-text hover:text-accent font-medium transition"
+              onClick={() => setIsOpen(false)}
+            >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#signup" className="block bg-primary text-white text-center py-2 rounded-full hover:bg-accent transition">
-            Sign Up
-          </a>
         </div>
       )}
     </nav>
   );
 }
-
-export default Navbar;

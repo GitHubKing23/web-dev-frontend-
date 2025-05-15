@@ -63,13 +63,7 @@ export default function Services() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 {service.title}
               </h3>
-              <p className="text-accent mb-4">{service.description}</p>
-              <a
-                href="#contact"
-                className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm hover:bg-accent transition"
-              >
-                Learn More
-              </a>
+              <p className="text-accent">{service.description}</p>
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap');
 
 /* Tailwind layers */
 @tailwind base;
@@ -59,4 +59,22 @@ button {
 button:hover {
   background-color: var(--accent-color);
   border-color: var(--primary-color);
+}
+
+/* Tailwind Typography (.prose) customization */
+.prose {
+  --tw-prose-body: var(--text-color);
+  --tw-prose-headings: var(--primary-color);
+  --tw-prose-links: var(--primary-color);
+  --tw-prose-bold: var(--primary-color);
+  --tw-prose-bullets: var(--accent-color);
+  --tw-prose-quotes: var(--accent-color);
+  --tw-prose-code: #1F2937; /* dark slate */
+  font-family: 'Inter', sans-serif;
+}
+
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-family: 'Playfair Display', serif;
 }
