@@ -9,10 +9,14 @@ export default function Navbar() {
     { label: 'Home', to: '/' },
     { label: 'Projects', to: '/projects' },
     { label: 'Services', to: '/services' },
+    { label: 'Pricing', to: '/pricing' }, // ✅ Confirmed
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
+    { label: 'Tools', to: '/tools' },
     { label: 'Contact', to: '/contact' },
   ];
+
+  console.log('✅ Navbar loaded with links:', navLinks);
 
   const linkClasses = (path) =>
     `text-text hover:text-accent font-medium transition-colors duration-200 ${
@@ -35,31 +39,22 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile menu toggle */}
+        {/* Mobile menu toggle (optional) */}
         <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-text focus:outline-none"
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+          <button onClick={() => setIsOpen(!isOpen)} className="text-primary focus:outline-none">
+            ☰
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 pt-2 pb-4 space-y-2">
+        <div className="md:hidden px-4 pt-2 pb-4 space-y-2 bg-white shadow">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               to={link.to}
-              className="block text-text hover:text-accent font-medium transition"
+              className="block text-text hover:text-primary"
               onClick={() => setIsOpen(false)}
             >
               {link.label}

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCode,
@@ -15,26 +16,31 @@ const services = [
     title: 'Web Development',
     description: 'Modern, responsive websites tailored to your brand.',
     icon: faCode,
+    slug: 'web-development',
   },
   {
     title: 'SEO Optimization',
     description: 'Boost your visibility with proven search engine strategies.',
     icon: faChartLine,
+    slug: 'seo-optimization',
   },
   {
     title: 'CMS Integration',
     description: 'Flexible, easy-to-manage content with headless CMS options.',
     icon: faCogs,
+    slug: 'cms-integration',
   },
   {
     title: 'App Development',
     description: 'Cross-platform mobile and web apps built for performance.',
     icon: faMobileAlt,
+    slug: 'app-development',
   },
   {
     title: 'Social Media Management',
     description: 'We grow your brand presence across all major platforms.',
     icon: faBullhorn,
+    slug: 'social-media-management',
   },
 ];
 
@@ -55,7 +61,7 @@ export default function Services() {
         <div className="grid gap-8 md:grid-cols-3">
           {services.map((service) => (
             <div
-              key={service.title}
+              key={service.slug}
               className="bg-white shadow-lg rounded-lg p-6 transition hover:-translate-y-1 hover:shadow-xl"
               data-aos="fade-up"
             >
@@ -63,7 +69,13 @@ export default function Services() {
               <h3 className="text-xl font-semibold text-primary mb-2">
                 {service.title}
               </h3>
-              <p className="text-accent">{service.description}</p>
+              <p className="text-accent mb-4">{service.description}</p>
+              <Link
+                to={`/services/${service.slug}`}
+                className="text-primary font-semibold hover:underline"
+              >
+                Learn More →
+              </Link>
             </div>
           ))}
         </div>

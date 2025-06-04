@@ -25,8 +25,9 @@ export default function BusinessNameGenerator() {
     const resultsWithStatus = [];
 
     for (let idea of ideas) {
+      const domain = `${idea.toLowerCase()}.com`;
       const available = await checkDomain(idea.toLowerCase());
-      resultsWithStatus.push({ name: `${idea}.com`, available });
+      resultsWithStatus.push({ name: domain, available });
     }
 
     setResults(resultsWithStatus);
@@ -68,12 +69,24 @@ export default function BusinessNameGenerator() {
                       <span className="text-red-600">✘ Taken</span>
                     )}
                   </span>
-                  <button
-                    onClick={() => navigator.clipboard.writeText(item.name)}
-                    className="text-sm text-blue-500 hover:underline"
-                  >
-                    Copy
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => navigator.clipboard.writeText(item.name)}
+                      className="text-sm text-blue-500 hover:underline"
+                    >
+                      Copy
+                    </button>
+                    {item.available && (
+                      <a
+                        href={`https://click.godaddy.com/affiliate?isc=cjcsb22025&url=https://www.godaddy.com/domainsearch/find?domainToCheck=${item.name}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
+                      >
+                        Buy
+                      </a>
+                    )}
+                  </div>
                 </li>
               ))}
             </ul>

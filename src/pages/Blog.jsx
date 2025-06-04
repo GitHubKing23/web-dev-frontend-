@@ -1,13 +1,22 @@
 import React from 'react';
 
-// Load all Markdown files
-const posts = import.meta.glob('../posts/*.md', { eager: true });
+// ✅ Import MDX files with frontmatter
+const posts = import.meta.glob('../../content/blog/*.mdx', { eager: true });
 
 export default function BlogPage() {
   const blogEntries = Object.entries(posts).map(([path, post]) => {
-    const slug = path.split('/').pop().replace('.md', '');
+    const slug = path.split('/').pop().replace('.mdx', '');
+
+    // ✅ Check multiple possible keys for frontmatter
+    const frontmatter = post?.frontmatter || post?.metadata || post?.meta || post?.attributes || {};
+
+    console.log(`🔍 Parsed post from "${path}":`, post);
+    console.log(`🧠 Extracted frontmatter:`, frontmatter);
+
     return {
-      ...post.metadata,
+      title: frontmatter.title || 'Untitled',
+      date: frontmatter.date || '',
+      author: frontmatter.author || 'Unknown',
       slug,
       Component: post.default,
     };
@@ -23,14 +32,18 @@ export default function BlogPage() {
       </div>
 
       <div className="max-w-3xl mx-auto space-y-10">
+        {blogEntries.length === 0 && (
+          <p className="text-center text-gray-500">No posts found.</p>
+        )}
+
         {blogEntries.map(({ title, date, author, Component }, idx) => (
           <article key={idx} className="bg-white p-6 rounded shadow">
             <h3 className="text-2xl font-semibold text-primary mb-1">{title}</h3>
             <p className="text-sm text-accent mb-4">
-              {author} • {new Date(date).toLocaleDateString()}
+              {author} • {date ? new Date(date).toLocaleDateString() : 'Unknown Date'}
             </p>
             <div className="prose max-w-none">
-              {Component ? <Component /> : <p className="text-red-500">Error loading content.</p>}
+              <Component />
             </div>
           </article>
         ))}

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "analyze": "node seo-speed-analyzer.mjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -16,9 +17,14 @@
     "@tailwindcss/typography": "^0.5.16",
     "aos": "^2.3.4",
     "axios": "^1.9.0",
+    "cheerio": "^1.0.0-rc.12",
+    "framer-motion": "^12.16.0",
+    "gray-matter": "^4.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-router-dom": "^7.6.0"
+    "react-router-dom": "^7.6.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
