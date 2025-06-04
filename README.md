@@ -10,3 +10,9 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Blog via GitHub CMS
+
+This project uses [Decap CMS](https://decapcms.org/) (formerly Netlify CMS) to manage blog posts stored in the `src/posts` folder. The CMS is configured with a GitHub backend so new posts are committed directly to this repository.
+
+To access the editor, open `/admin` when the site is running. Log in with your GitHub account and you will be able to create or edit Markdown/MDX posts.
