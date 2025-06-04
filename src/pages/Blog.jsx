@@ -1,11 +1,11 @@
 import React from 'react';
 
-// Load all Markdown files
-const posts = import.meta.glob('../posts/*.md', { eager: true });
+// Load all Markdown files (MDX)
+const posts = import.meta.glob('../posts/*.mdx', { eager: true });
 
 export default function BlogPage() {
   const blogEntries = Object.entries(posts).map(([path, post]) => {
-    const slug = path.split('/').pop().replace('.md', '');
+    const slug = path.split('/').pop().replace('.mdx', '');
     return {
       ...post.metadata,
       slug,
