@@ -10,6 +10,8 @@ import ProjectsPage from './pages/Projects.jsx';
 import ContactPage from './pages/Contact.jsx';
 import AboutPage from './pages/About.jsx';
 import BlogPage from './pages/Blog.jsx';
+import ToolsPage from './pages/Tools.jsx';      // ✅ Add this
+import PricingPage from './pages/Pricing.jsx';  // ✅ Add this
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/tools" element={<ToolsPage />} />         {/* ✅ Fix */}
+          <Route path="/pricing" element={<PricingPage />} />     {/* ✅ Fix */}
         </Routes>
       </main>
       <Footer />

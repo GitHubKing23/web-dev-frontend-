@@ -5,8 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WebMasteryPro CMS</title>
 
-    <!-- ✅ Netlify CMS script -->
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon-v2.ico" />
+
+    <!-- ✅ Optional: Elegant Font for CMS Header -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Netlify CMS -->
     <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
+
+    <!-- ✅ Favicon Debug Script -->
+    <script>
+      window.addEventListener('load', () => {
+        const favicon = document.querySelector("link[rel~='icon']");
+        if (favicon) {
+          console.log('✅ [CMS] Favicon found:', favicon.href);
+
+          const img = new Image();
+          img.src = favicon.href;
+
+          img.onload = () => console.log('🟢 [CMS] Favicon loaded successfully.');
+          img.onerror = () => console.error('🔴 [CMS] Favicon failed:', favicon.href);
+        } else {
+          console.warn('⚠️ [CMS] Favicon link tag not found.');
+        }
+      });
+    </script>
   </head>
   <body>
   </body>

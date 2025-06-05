@@ -1,3 +1,4 @@
+<!-- ✅ Favicon Debug Script -->
 <script>
   window.addEventListener('load', () => {
     const faviconSelector = "link[rel~='icon']";
@@ -16,7 +17,6 @@
     console.log("✅ Favicon link element found:", favicon.outerHTML);
     const faviconURL = favicon.href;
 
-    // Try loading the favicon
     const testImg = new Image();
     testImg.src = faviconURL;
 
@@ -29,7 +29,6 @@
       console.error("🔴 Favicon failed to load:", faviconURL);
       console.info("🔁 Attempting direct fetch for more info...");
 
-      // Fallback: Try fetching it manually to inspect error
       fetch(faviconURL)
         .then(res => {
           if (!res.ok) {
