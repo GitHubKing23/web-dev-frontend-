@@ -9,14 +9,14 @@ export default function Navbar() {
     { label: 'Home', to: '/' },
     { label: 'Projects', to: '/projects' },
     { label: 'Services', to: '/services' },
-    { label: 'Pricing', to: '/pricing' }, // ✅ Confirmed
+    { label: 'Pricing', to: '/pricing' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
+    { label: 'Domains', to: '/domains' },
     { label: 'Tools', to: '/tools' },
     { label: 'Contact', to: '/contact' },
   ];
 
-  console.log('✅ Navbar loaded with links:', navLinks);
 
   const linkClasses = (path) =>
     `text-text hover:text-accent font-medium transition-colors duration-200 ${

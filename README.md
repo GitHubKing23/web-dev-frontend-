@@ -1,59 +1,63 @@
-diff --git a/README.md b/README.md
-index 7059a962adb0138b65dd10e0aee66ccfe984b8c6..e623d5bc750a336bf82d90efe83697c17a4dcb04 100644
---- a/README.md
-+++ b/README.md
-@@ -1,12 +1,54 @@
- # React + Vite
- 
- This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
- 
- Currently, two official plugins are available:
- 
- - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
- - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
- 
- ## Expanding the ESLint configuration
- 
- If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-+
-+## Getting Started
-+
-+### Installation
-+
-+1. Install dependencies:
-+   ```bash
-+   npm install
-+   ```
-+
-+### Development
-+
-+Start the development server at `http://localhost:5173`:
-+
-+```bash
-+npm run dev
-+```
-+
-+### Production Build
-+
-+Generate a production-ready build:
-+
-+```bash
-+npm run build
-+```
-+
-+### Environment Variables
-+
-+Create a `.env` file at the project root to store API keys and other secrets.
-+The following variables are used:
-+
-+- `VITE_REACT_APP_PSI_KEY` – API key for the SEO Speed Analyzer component.
-+- `WHOIS_API_KEY` – API key required by the Netlify `domainLookup` function.
-+
-+### Available npm scripts
-+
-+- `dev` – start the Vite development server.
-+- `build` – bundle the application for production.
-+- `preview` – preview the production build locally.
-+- `lint` – run ESLint over the project.
-+- `analyze` – run the SEO speed analyzer script.
-+
+# WebMasteryPro Frontend
+
+This project uses **React** with **Vite** to provide a collection of tools and resources for small businesses. It includes dynamic pages such as a pricing table, service listings and a domain search utility.
+
+## Getting Started
+
+### Installation
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Run the development server at `http://localhost:5173`:
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Domain Search
+
+Navigate to `/domains` to search WHOIS data across multiple TLDs. The page lets you filter by common extensions and forwards available domains to GoDaddy via an affiliate link.
+
+### Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+- `VITE_REACT_APP_PSI_KEY` – API key for the SEO Speed Analyzer.
+- `WHOIS_API_KEY` – API key required by the Netlify `domainLookup` function.
+
+### Available npm scripts
+
+- `dev` – start the Vite development server.
+- `build` – bundle the application for production.
+- `preview` – preview the production build locally.
+- `lint` – run ESLint over the project.
+- `analyze` – run the SEO speed analyzer script.
+
+## Applying patches
+
+Patch files in this repository can be applied with the helper script in the `scripts` directory.
+
+```bash
+./scripts/apply-patch.sh path/to/patch.patch
+```
+
+A convenience script is provided to apply the `favicon-fix.patch` file:
+
+```bash
+./apply-favicon-update.sh
+```
+
