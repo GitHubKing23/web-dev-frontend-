@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { parseFrontmatter } from '../util/simpleFrontmatter.js';
 import calcReadTime from '../util/calcReadTime.js';
@@ -12,15 +13,10 @@ const rawPosts = import.meta.glob('../../content/blog/*.mdx', {
 
 export default function BlogPage() {
   const blogEntries = Object.entries(posts)
-    .map(([path, post]) => {
+    .map(([path]) => {
       const slug = path.split('/').pop().replace('.mdx', '');
       const raw = rawPosts[path];
       const { metadata, content } = parseFrontmatter(raw);
-
-      if (!metadata?.title || metadata.title.toLowerCase().includes('untitled')) {
-        console.warn(`⚠️ Metadata not parsed for: ${slug}`);
-        console.log('📄 Raw preview:\n', raw.slice(0, 400));
-      }
 
       const title = metadata?.title?.trim() || 'Untitled';
       const date = metadata?.date?.trim() || '';

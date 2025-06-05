@@ -15,7 +15,6 @@ export default function SeoSpeedAnalyzer() {
     setScore(null);
     setDetails(null);
 
-    // ✅ Use Vite-compatible env variable
     const apiKey = import.meta.env.VITE_REACT_APP_PSI_KEY || 'AIzaSyBYkxpkgFdK9CmGQC-oOFkia4G7U3F37GU';
 
     try {
