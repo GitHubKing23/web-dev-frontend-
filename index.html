@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- ‚úÖ Custom Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon-v2.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>WebMasteryPro</title>
@@ -16,5 +17,28 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ‚úÖ Favicon Debug Script -->
+    <script>
+      window.addEventListener('load', () => {
+        const favicon = document.querySelector("link[rel~='icon']");
+        if (favicon) {
+          console.log('‚úÖ Favicon element found:', favicon.href);
+
+          const img = new Image();
+          img.src = favicon.href;
+
+          img.onload = () => {
+            console.log('Ìø¢ Favicon image loaded successfully.');
+          };
+
+          img.onerror = () => {
+            console.error('Ì¥¥ Failed to load favicon image:', favicon.href);
+          };
+        } else {
+          console.warn('‚ö†Ô∏è Favicon link tag not found in the document.');
+        }
+      });
+    </script>
   </body>
 </html>
