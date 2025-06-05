@@ -50,29 +50,34 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-light py-20 px-6 font-body">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-heading font-bold text-primary mb-4">
-          What We Offer
+    <section id="services" className="bg-background py-20 px-6 font-body">
+      <div className="max-w-7xl mx-auto text-center relative z-10">
+        {/* Accent divider */}
+        <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
+
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-3">
+          💼 What We Offer
         </h2>
-        <p className="text-accent mb-12 text-lg">
-          Solutions crafted to elevate your online presence.
+        <p className="text-text text-base md:text-lg mb-12 max-w-2xl mx-auto">
+          Solutions tailored to elevate your brand online — across web, mobile, search, and social.
         </p>
-        <div className="grid gap-8 md:grid-cols-3">
+
+        {/* Grid */}
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
           {services.map((service) => (
             <div
               key={service.slug}
-              className="bg-white shadow-lg rounded-lg p-6 transition hover:-translate-y-1 hover:shadow-xl"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all p-6 text-left"
               data-aos="fade-up"
             >
               <FontAwesomeIcon icon={service.icon} className="text-4xl text-primary mb-4" />
-              <h3 className="text-xl font-semibold text-primary mb-2">
+              <h3 className="text-xl font-heading text-primary font-semibold mb-2">
                 {service.title}
               </h3>
-              <p className="text-accent mb-4">{service.description}</p>
+              <p className="text-text text-sm mb-4 opacity-90">{service.description}</p>
               <Link
                 to={`/services/${service.slug}`}
-                className="text-primary font-semibold hover:underline"
+                className="text-accent font-semibold text-sm hover:underline"
               >
                 Learn More →
               </Link>
@@ -80,6 +85,9 @@ export default function Services() {
           ))}
         </div>
       </div>
+
+      {/* Optional background blob */}
+      <div className="absolute top-[-50px] left-[-80px] w-[250px] h-[250px] bg-accent opacity-10 blur-3xl rounded-full z-0" />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const suffixes = ['Hub', 'Forge', 'Labs', 'Flow', 'Nest', 'Nation', 'Hive', 'Wave', 'King', 'Zone'];
+const GODADDY_AFFILIATE = 'https://click.godaddy.com/affiliate?isc=cjcsb22025&url=https://www.godaddy.com/domainsearch/find?checkAvail=1&domainToCheck=';
 
 export default function BusinessNameGenerator() {
   const [keyword, setKeyword] = useState('');
@@ -10,10 +10,11 @@ export default function BusinessNameGenerator() {
 
   const checkDomain = async (domain) => {
     try {
-      const res = await axios.get(`https://api.domainsdb.info/v1/domains/search?domain=${domain}&zone=com`);
-      return !res.data.domains; // true if domain not found (available)
-    } catch (error) {
-      return true; // fallback to available if rate limited or error
+      const res = await fetch(`/.netlify/functions/domainLookup?domain=${domain}`);
+      const data = await res.json();
+      return data?.WhoisRecord?.domainAvailability !== 'UNAVAILABLE';
+    } catch {
+      return true;
     }
   };
 
@@ -25,8 +26,8 @@ export default function BusinessNameGenerator() {
     const resultsWithStatus = [];
 
     for (let idea of ideas) {
-      const domain = `${idea.toLowerCase()}.com`;
-      const available = await checkDomain(idea.toLowerCase());
+      const domain = idea.toLowerCase() + '.com';
+      const available = await checkDomain(domain);
       resultsWithStatus.push({ name: domain, available });
     }
 
@@ -35,64 +36,72 @@ export default function BusinessNameGenerator() {
   };
 
   return (
-    <section className="py-16 px-6 bg-white text-center font-body" id="generator">
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-3xl font-heading font-bold text-primary mb-4">
-          Business Name Generator
+    <section className="relative py-16 px-6 bg-background text-center font-body" id="generator">
+      <div className="max-w-3xl mx-auto">
+        {/* Section Divider */}
+        <div className="w-14 h-1 bg-accent mx-auto mb-6 rounded-full" />
+
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-3">
+          🔍 Business Name Generator
         </h2>
+        <p className="text-text text-base md:text-lg mb-8 max-w-xl mx-auto">
+          Enter a keyword below and we'll create brandable business name ideas + check their .com availability.
+        </p>
+
+        {/* Input */}
         <input
           type="text"
-          placeholder="Enter a niche or keyword..."
+          placeholder="e.g. design, crypto, app..."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          className="w-full border border-gray-300 rounded px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-primary"
+          className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 focus:outline-none focus:ring-2 focus:ring-primary text-sm md:text-base"
         />
+
+        {/* Button */}
         <button
           onClick={generateNames}
           disabled={loading}
-          className="bg-primary text-white px-6 py-2 rounded-full hover:bg-accent transition disabled:opacity-50"
+          className="bg-accent text-white px-6 py-3 rounded-full text-sm md:text-base font-semibold hover:bg-yellow-500 transition disabled:opacity-50 shadow-md"
         >
-          {loading ? 'Checking...' : 'Generate Names'}
+          {loading ? 'Checking Domains...' : 'Generate Names'}
         </button>
 
+        {/* Results */}
         {results.length > 0 && (
-          <div className="mt-8 text-left">
-            <h3 className="text-xl font-semibold mb-2 text-primary">Results</h3>
-            <ul className="space-y-2">
+          <div className="mt-10 text-left">
+            <h3 className="text-xl font-heading text-primary mb-3">🧪 Results</h3>
+            <ul className="space-y-3">
               {results.map((item, index) => (
-                <li key={index} className="flex items-center justify-between border px-4 py-2 rounded">
-                  <span>
+                <li
+                  key={index}
+                  className="flex items-center justify-between border border-gray-200 rounded-lg px-4 py-3 bg-white shadow-sm hover:shadow-md transition"
+                >
+                  <span className="font-medium text-sm md:text-base">
                     {item.name}{' '}
                     {item.available ? (
-                      <span className="text-green-600">✔ Available</span>
+                      <span className="text-green-600 ml-2">✔ Available</span>
                     ) : (
-                      <span className="text-red-600">✘ Taken</span>
+                      <span className="text-red-500 ml-2">✘ Taken</span>
                     )}
                   </span>
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={() => navigator.clipboard.writeText(item.name)}
-                      className="text-sm text-blue-500 hover:underline"
-                    >
-                      Copy
-                    </button>
-                    {item.available && (
-                      <a
-                        href={`https://click.godaddy.com/affiliate?isc=cjcsb22025&url=https://www.godaddy.com/domainsearch/find?domainToCheck=${item.name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
-                      >
-                        Buy
-                      </a>
-                    )}
-                  </div>
+                  <a
+                    href={`${GODADDY_AFFILIATE}${item.name}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-blue-600 hover:underline"
+                  >
+                    Buy
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
         )}
       </div>
+
+      {/* Decorative SVG blob (optional) */}
+      <div className="absolute top-[-80px] right-[-80px] w-[250px] h-[250px] bg-primary opacity-10 rounded-full blur-3xl z-0" />
     </section>
   );
 }
