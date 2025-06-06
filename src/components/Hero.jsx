@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
 const rotatingWords = ['Elegance', 'Speed', 'Precision', 'Impact'];
 
@@ -16,18 +16,15 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-white text-center py-16 md:py-20 px-4">
-      {/* Background Blob SVG */}
       <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-accent opacity-10 rounded-full blur-3xl z-0" />
-      
+
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Accent Divider */}
         <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
 
-        {/* Main Heading */}
         <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-primary tracking-tight leading-tight mb-4">
           Build Your Vision with{' '}
           <AnimatePresence mode="wait">
-            <motion.span
+            <Motion.span
               key={rotatingWords[index]}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -36,16 +33,14 @@ export default function Hero() {
               className="inline-block text-accent"
             >
               {rotatingWords[index]}
-            </motion.span>
+            </Motion.span>
           </AnimatePresence>
         </h1>
 
-        {/* Subheading */}
         <p className="text-text font-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
           We craft beautiful, high-performance websites and applications that elevate your brand and grow your business.
         </p>
 
-        {/* CTA */}
         <Link
           to="/pricing"
           className="inline-block bg-accent text-white px-6 py-3 rounded-full text-lg font-medium hover:bg-yellow-500 transition-transform transform hover:scale-105 shadow-md"
@@ -54,7 +49,6 @@ export default function Hero() {
         </Link>
       </div>
 
-      {/* Wave Divider at Bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
         <svg
           className="relative block w-full h-[60px]"
@@ -62,8 +56,9 @@ export default function Hero() {
           viewBox="0 0 1440 320"
         >
           <path
-            fill="#f8f9fa"
-            d="M0,128L48,138.7C96,149,192,171,288,186.7C384,203,480,213,576,197.3C672,181,768,139,864,138.7C960,139,1056,181,1152,176C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+            fill="#ffffff"
+            fillOpacity="1"
+            d="M0,160L40,149.3C80,139,160,117,240,128C320,139,400,181,480,186.7C560,192,640,160,720,138.7C800,117,880,107,960,117.3C1040,128,1120,160,1200,165.3C1280,171,1360,149,1400,138.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
           ></path>
         </svg>
       </div>

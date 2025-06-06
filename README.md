@@ -34,11 +34,20 @@ If you are developing a production application, we recommend using TypeScript wi
    npm run lint
    ```
 
+<<<<<<< ours
 4. Run tests with [Jest](https://jestjs.io/) (requires Node.js >= 18):
+=======
+4. Run tests using Node's built-in test runner:
+>>>>>>> theirs
    ```bash
-   npm test --silent
+   npm test
    ```
+<<<<<<< ours
    Jest is installed with the project dependencies and runs via the `npm test` script.
+=======
+   The project uses ECMAScript modules, so no extra configuration is
+   required.
+>>>>>>> theirs
 
 ### Deployment patches
 

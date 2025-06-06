@@ -10,20 +10,20 @@ describe('Navbar component', () => {
       </MemoryRouter>
     );
 
-    const expectedLinks = [
+    const links = [
       'Home',
       'Projects',
       'Services',
       'Pricing',
+      'Marketplace',
       'About',
       'Blog',
       'Tools',
-      'Contact',
-      'Marketplace' // ✅ Only include this if your Navbar component includes it
+      'Contact'
     ];
 
-    for (const label of expectedLinks) {
-      expect(screen.getByText(label)).toBeInTheDocument();
-    }
+    links.forEach((text) => {
+      expect(screen.getByText(text)).toBeInTheDocument();
+    });
   });
 });
