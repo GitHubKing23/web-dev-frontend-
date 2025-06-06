@@ -19,6 +19,8 @@ If you are developing a production application, we recommend using TypeScript wi
    ```bash
    npm install
    ```
+   If you pull new changes that modify `package.json`, run this command again
+   to ensure any added packages are installed locally.
 
 2. Start the dev server:
    ```bash
