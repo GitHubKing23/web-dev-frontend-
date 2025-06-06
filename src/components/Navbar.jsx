@@ -1,3 +1,4 @@
+import React from 'react'; // ✅ REQUIRED for Jest testing
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,14 +10,13 @@ export default function Navbar() {
     { label: 'Home', to: '/' },
     { label: 'Projects', to: '/projects' },
     { label: 'Services', to: '/services' },
-    { label: 'Pricing', to: '/pricing' }, // ✅ Confirmed
+    { label: 'Pricing', to: '/pricing' },
+    { label: 'Marketplace', to: '/marketplace' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
     { label: 'Tools', to: '/tools' },
     { label: 'Contact', to: '/contact' },
   ];
-
-  console.log('✅ Navbar loaded with links:', navLinks);
 
   const linkClasses = (path) =>
     `text-text hover:text-accent font-medium transition-colors duration-200 ${
@@ -30,7 +30,6 @@ export default function Navbar() {
           WebMasteryPro
         </Link>
 
-        {/* Desktop links */}
         <div className="hidden md:flex space-x-6">
           {navLinks.map((link) => (
             <Link key={link.label} to={link.to} className={linkClasses(link.to)}>
@@ -39,7 +38,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Mobile menu toggle (optional) */}
         <div className="md:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="text-primary focus:outline-none">
             ☰
@@ -47,7 +45,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden px-4 pt-2 pb-4 space-y-2 bg-white shadow">
           {navLinks.map((link) => (

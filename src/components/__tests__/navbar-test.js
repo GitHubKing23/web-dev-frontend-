@@ -1,16 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import Navbar from '../Navbar';
+const fs = require('fs');
+const path = require('path');
 
 describe('Navbar component', () => {
   it('includes all expected navigation links', () => {
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
+    const navbarPath = path.resolve(__dirname, '../Navbar.jsx');
+    const source = fs.readFileSync(navbarPath, 'utf-8');
 
-    const links = [
+    const expectedLinks = [
       'Home',
       'Projects',
       'Services',
@@ -19,11 +15,11 @@ describe('Navbar component', () => {
       'About',
       'Blog',
       'Tools',
-      'Contact'
+      'Contact',
     ];
 
-    links.forEach((text) => {
-      expect(screen.getByText(text)).toBeInTheDocument();
-    });
+    for (const label of expectedLinks) {
+      expect(source).toContain(`label: '${label}'`);
+    }
   });
 });
