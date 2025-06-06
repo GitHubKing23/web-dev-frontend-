@@ -14,6 +14,7 @@ import ToolsPage from './pages/Tools.jsx';
 import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
+import DomainSearchPage from './pages/DomainSearch.jsx';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/arcard" element={<ArCardPage />} />
           <Route path="/marketplace" element={<MarketplacePage />} />
+          <Route path="/domains" element={<DomainSearchPage />} />
         </Routes>
       </main>
       <Footer />

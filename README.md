@@ -18,3 +18,54 @@ If you are developing a production application, we recommend using TypeScript wi
 1. Install dependencies:
    ```bash
    npm install
+   ```
+
+2. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+
+3. Run the linter:
+   ```bash
+   npm run lint
+   ```
+
+4. Run tests (requires Node.js >= 18):
+   ```bash
+   npm test --silent
+   ```
+
+The test script uses Node's built-in test runner, so no additional packages are required.
+
+### Deployment patches
+
+Certain updates, such as the favicon change, are provided as patch files. Apply them with:
+
+```bash
+git apply favicon-fix.patch
+```
+
+Or run the helper script:
+
+```bash
+bash ./apply-favicon-update.sh
+```
+
+If patching fails because files already exist, review the `.rej` files and apply the changes manually.
+
+### GitHub workflow
+
+1. Fork this repo and clone your fork.
+2. Create a feature branch:
+
+   ```bash
+   git checkout -b my-feature
+   ```
+
+3. Commit your changes with clear messages:
+
+   ```bash
+   git commit -am "Add my feature"
+   ```
+
+4. Push and open a pull request on GitHub.
