@@ -19,6 +19,9 @@ If you are developing a production application, we recommend using TypeScript wi
    ```bash
    npm install
    ```
+   If you pull new changes that modify `package.json`, run this command again
+   to ensure any added packages are installed locally. Afterwards, restart the
+   dev server with `npm run dev` so the new modules are compiled.
 
 <<<<<<< ours
 2. Start the dev server:
@@ -31,12 +34,11 @@ If you are developing a production application, we recommend using TypeScript wi
    npm run lint
    ```
 
-4. Run tests (requires Node.js >= 18):
+4. Run tests with [Jest](https://jestjs.io/) (requires Node.js >= 18):
    ```bash
    npm test --silent
    ```
-
-The test script uses Node's built-in test runner, so no additional packages are required.
+   Jest is installed with the project dependencies and runs via the `npm test` script.
 
 ### Deployment patches
 

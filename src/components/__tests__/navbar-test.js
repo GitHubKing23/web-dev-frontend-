@@ -1,25 +1,29 @@
-import fs from 'fs';
-import path from 'path';
+import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import Navbar from '../Navbar';
 
 describe('Navbar component', () => {
   it('includes all expected navigation links', () => {
-    const navbarPath = path.resolve(__dirname, '../Navbar.jsx');
-    const source = fs.readFileSync(navbarPath, 'utf-8');
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
 
     const expectedLinks = [
       'Home',
       'Projects',
       'Services',
       'Pricing',
-      'Marketplace',
       'About',
       'Blog',
       'Tools',
       'Contact',
+      'Marketplace' // ✅ Only include this if your Navbar component includes it
     ];
 
     for (const label of expectedLinks) {
-      expect(source).toContain(`'${label}'`);
+      expect(screen.getByText(label)).toBeInTheDocument();
     }
   });
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { parseFrontmatter } from '../util/simpleFrontmatter.js';
 import calcReadTime from '../util/calcReadTime.js';
 
@@ -12,14 +12,13 @@ const rawPosts = import.meta.glob('../../content/blog/*.mdx', {
 
 export default function BlogPage() {
   const blogEntries = Object.entries(posts)
-    .map(([path, post]) => {
+    .map(([path]) => {
       const slug = path.split('/').pop().replace('.mdx', '');
       const raw = rawPosts[path];
       const { metadata, content } = parseFrontmatter(raw);
 
       if (!metadata?.title || metadata.title.toLowerCase().includes('untitled')) {
         console.warn(`⚠️ Metadata not parsed for: ${slug}`);
-        console.log('📄 Raw preview:\n', raw.slice(0, 400));
       }
 
       const title = metadata?.title?.trim() || 'Untitled';
@@ -58,7 +57,7 @@ export default function BlogPage() {
         )}
 
         {blogEntries.map(({ title, date, author, readTime, slug, excerpt }, idx) => (
-          <motion.article
+          <Motion.article
             key={idx}
             className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-all"
             initial={{ opacity: 0, y: 30 }}
@@ -80,7 +79,7 @@ export default function BlogPage() {
             >
               Read more →
             </Link>
-          </motion.article>
+          </Motion.article>
         ))}
       </div>
     </section>
