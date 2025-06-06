@@ -11,19 +11,23 @@ exports.handler = async function (event) {
   }
 
   try {
-    const response = await axios.get("https://www.whoisxmlapi.com/whoisserver/WhoisService", {
-      params: {
-        apiKey: process.env.WHOIS_API_KEY,
-        domainName: domain,
-        outputFormat: "JSON",
-      },
-    });
+    const response = await axios.get(
+      "https://www.whoisxmlapi.com/whoisserver/WhoisService",
+      {
+        params: {
+          apiKey: process.env.WHOIS_API_KEY,
+          domainName: domain,
+          outputFormat: "JSON",
+        },
+      }
+    );
 
     return {
       statusCode: 200,
       body: JSON.stringify(response.data),
     };
   } catch (error) {
+    console.error("WHOIS lookup failed:", error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Failed to fetch WHOIS data" }),
