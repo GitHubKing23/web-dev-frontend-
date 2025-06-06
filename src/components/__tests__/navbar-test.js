@@ -1,25 +1,24 @@
 const fs = require('fs');
 const path = require('path');
+const assert = require('node:assert');
+const test = require('node:test');
 
-describe('Navbar component', () => {
-  it('includes all expected navigation links', () => {
-    const navbarPath = path.resolve(__dirname, '../Navbar.jsx');
-    const source = fs.readFileSync(navbarPath, 'utf-8');
+test('Navbar includes all expected links', () => {
+  const navbarPath = path.resolve(__dirname, '../Navbar.jsx');
+  const source = fs.readFileSync(navbarPath, 'utf-8');
+  const expectedLinks = [
+    'Home',
+    'Projects',
+    'Services',
+    'Pricing',
+    'Marketplace',
+    'About',
+    'Blog',
+    'Tools',
+    'Contact',
+  ];
 
-    const expectedLinks = [
-      'Home',
-      'Projects',
-      'Services',
-      'Pricing',
-      'Marketplace',
-      'About',
-      'Blog',
-      'Tools',
-      'Contact',
-    ];
-
-    for (const label of expectedLinks) {
-      expect(source).toContain(`'${label}'`);
-    }
-  });
+  for (const label of expectedLinks) {
+    assert.ok(source.includes(`'${label}'`));
+  }
 });
