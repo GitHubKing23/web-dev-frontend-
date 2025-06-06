@@ -17,5 +17,3 @@ const expected = [
 for (const name of expected) {
   assert(source.includes(`'${name}'`), `Missing link ${name}`);
 }
-
-console.log('Navbar links test passed');
