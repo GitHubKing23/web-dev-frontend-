@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-export default function GoogleAnalytics({ trackingId }) {
+const GoogleAnalytics = () => {
   useEffect(() => {
-    if (!trackingId) return;
-
-    const script = document.createElement('script');
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
+    const script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX";
     script.async = true;
     document.head.appendChild(script);
 
@@ -13,14 +11,11 @@ export default function GoogleAnalytics({ trackingId }) {
     function gtag() {
       window.dataLayer.push(arguments);
     }
-
-    gtag('js', new Date());
-    gtag('config', trackingId);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, [trackingId]);
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXX"); // Replace with your GA ID
+  }, []);
 
   return null;
-}
+};
+
+export default GoogleAnalytics;
