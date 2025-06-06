@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 describe('Navbar component', () => {
   it('includes all expected navigation links', () => {
