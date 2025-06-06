@@ -50,5 +50,6 @@ Create a `.env` file at the project root to store API keys and other secrets. Th
 - `preview` – preview the production build locally.
 - `lint` – run ESLint over the project.
 - `analyze` – run the SEO speed analyzer script.
+- `test` – verify the Navbar includes all navigation links.
 
 To run `npm run lint` successfully, make sure all dev dependencies are installed. If `@eslint/js` or other packages are missing, run `npm install` first.

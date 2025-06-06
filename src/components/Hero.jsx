@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 
 const rotatingWords = ['Elegance', 'Speed', 'Precision', 'Impact'];
 
@@ -27,7 +27,7 @@ export default function Hero() {
         <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-primary tracking-tight leading-tight mb-4">
           Build Your Vision with{' '}
           <AnimatePresence mode="wait">
-            <motion.span
+            <Motion.span
               key={rotatingWords[index]}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ export default function Hero() {
               className="inline-block text-accent"
             >
               {rotatingWords[index]}
-            </motion.span>
+            </Motion.span>
           </AnimatePresence>
         </h1>
 

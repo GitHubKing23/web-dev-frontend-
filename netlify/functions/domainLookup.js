@@ -23,7 +23,7 @@ exports.handler = async function (event) {
       statusCode: 200,
       body: JSON.stringify(response.data),
     };
-  } catch (error) {
+  } catch {
     return {
       statusCode: 500,
       body: JSON.stringify({ error: "Failed to fetch WHOIS data" }),
