@@ -15,11 +15,7 @@ export default function Marketplace() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {templates.map((tpl) => (
           <div key={tpl.title} className="border rounded-lg shadow overflow-hidden flex flex-col">
-            <img
-              src={tpl.image}
-              alt={`${tpl.title} screenshot`}
-              className="w-full h-48 object-cover"
-            />
+            <img src={tpl.image} alt={`${tpl.title} screenshot`} className="w-full h-48 object-cover" />
             <div className="p-4 flex flex-col flex-grow">
               <h2 className="text-2xl font-semibold mb-2">{tpl.title}</h2>
               <a
