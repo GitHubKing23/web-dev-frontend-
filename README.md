@@ -57,3 +57,6 @@ index 7059a962adb0138b65dd10e0aee66ccfe984b8c6..e623d5bc750a336bf82d90efe83697c1
 +- `lint` – run ESLint over the project.
 +- `analyze` – run the SEO speed analyzer script.
 +
+
+To run `npm run lint` successfully, make sure all dev dependencies are installed.
+If `@eslint/js` or other packages are missing, run `npm install` first.
