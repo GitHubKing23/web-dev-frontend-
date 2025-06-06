@@ -10,6 +10,7 @@ export default function Navbar() {
     { label: 'Projects', to: '/projects' },
     { label: 'Services', to: '/services' },
     { label: 'Pricing', to: '/pricing' }, // ✅ Confirmed
+    { label: 'Marketplace', to: '/marketplace' },
     { label: 'About', to: '/about' },
     { label: 'Blog', to: '/blog' },
     { label: 'Tools', to: '/tools' },
