@@ -4,14 +4,18 @@ import mdx from '@mdx-js/rollup';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
 
+// Vite configuration
 export default defineConfig({
   plugins: [
-    react(),
+    react(), // Enables React support
     mdx({
       remarkPlugins: [
-        remarkFrontmatter,
-        [remarkMdxFrontmatter, { name: 'metadata' }] // this injects `metadata` field
+        remarkFrontmatter, // Parses YAML frontmatter (e.g., title, date)
+        [remarkMdxFrontmatter, { name: 'metadata' }] // Injects frontmatter as `metadata`
       ]
     })
-  ]
+  ],
+  server: {
+    historyApiFallback: true // Ensures proper routing with React Router
+  }
 });

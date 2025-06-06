@@ -20,6 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
    npm install
    ```
 
+<<<<<<< ours
 2. Start the dev server:
    ```bash
    npm run dev
@@ -69,3 +70,10 @@ If patching fails because files already exist, review the `.rej` files and apply
    ```
 
 4. Push and open a pull request on GitHub.
+=======
+   Whenever the project updates its `package.json` with new dependencies, run
+   `npm install` again to ensure all required packages are available. The dev
+   server depends on plugins such as `@mdx-js/rollup`, so missing installs will
+   cause errors like `Cannot find module '@mdx-js/rollup'` when running
+   `npm run dev`.
+>>>>>>> theirs
