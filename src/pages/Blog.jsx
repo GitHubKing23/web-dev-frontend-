@@ -19,7 +19,6 @@ export default function BlogPage() {
 
       if (!metadata?.title || metadata.title.toLowerCase().includes('untitled')) {
         console.warn(`⚠️ Metadata not parsed for: ${slug}`);
-        console.log('📄 Raw preview:\n', raw.slice(0, 400));
       }
 
       const title = metadata?.title?.trim() || 'Untitled';

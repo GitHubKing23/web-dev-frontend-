@@ -16,7 +16,6 @@ export default function Navbar() {
     { label: 'Contact', to: '/contact' },
   ];
 
-  console.log('✅ Navbar loaded with links:', navLinks);
 
   const linkClasses = (path) =>
     `text-text hover:text-accent font-medium transition-colors duration-200 ${
