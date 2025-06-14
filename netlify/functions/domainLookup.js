@@ -11,16 +11,13 @@ exports.handler = async function (event) {
   }
 
   try {
-    const response = await axios.get(
-      "https://www.whoisxmlapi.com/whoisserver/WhoisService",
-      {
-        params: {
-          apiKey: process.env.WHOIS_API_KEY,
-          domainName: domain,
-          outputFormat: "JSON",
-        },
-      }
-    );
+    const response = await axios.get("https://www.whoisxmlapi.com/whoisserver/WhoisService", {
+      params: {
+        apiKey: process.env.WHOIS_API_KEY,
+        domainName: domain,
+        outputFormat: "JSON",
+      },
+    });
 
     return {
       statusCode: 200,

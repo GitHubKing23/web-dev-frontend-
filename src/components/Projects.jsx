@@ -8,14 +8,11 @@ export default function Projects() {
         <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
 
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-8">
-          ⭐ Featured Project
+          ⭐ Featured Projects
         </h2>
 
-        <div
-          className="bg-light rounded-2xl shadow-lg p-6 md:flex items-center gap-8"
-          data-aos="fade-up"
-        >
-          {/* Left: Image */}
+        {/* Project 1 - SportifyInsider */}
+        <div className="bg-light rounded-2xl shadow-lg p-6 md:flex items-center gap-8 mb-12" data-aos="fade-up">
           <div className="md:w-1/2 mb-6 md:mb-0" data-aos="zoom-in">
             <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-transform hover:scale-[1.02]">
               <img
@@ -26,7 +23,6 @@ export default function Projects() {
             </div>
           </div>
 
-          {/* Right: Text */}
           <div className="md:w-1/2 text-left" data-aos="fade-left">
             <h3 className="text-2xl font-heading font-semibold text-primary mb-3">
               SportifyInsider
@@ -45,6 +41,46 @@ export default function Projects() {
               </a>
               <a
                 href="https://github.com/GitHubKing23"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary underline text-sm font-semibold hover:text-accent transition"
+              >
+                🛠 View Source
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Project 2 - IronThrive */}
+        <div className="bg-light rounded-2xl shadow-lg p-6 md:flex items-center gap-8" data-aos="fade-up">
+          <div className="md:w-1/2 mb-6 md:mb-0" data-aos="zoom-in">
+            <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-transform hover:scale-[1.02]">
+              <img
+                src="/assets/ironthrive-template.svg"
+                alt="IronThrive Screenshot"
+                className="w-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="md:w-1/2 text-left" data-aos="fade-left">
+            <h3 className="text-2xl font-heading font-semibold text-primary mb-3">
+              IronThrive
+            </h3>
+            <p className="text-text text-base mb-5 leading-relaxed">
+              IronThrive is a performance-focused wellness platform with BMI calculators, nutrition tools, and custom workout utilities. It emphasizes accessibility, responsiveness, and modern UI best practices.
+            </p>
+            <div className="flex gap-4 flex-wrap">
+              <a
+                href="https://www.ironthrive.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-accent text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-yellow-500 transition"
+              >
+                🚀 View Live
+              </a>
+              <a
+                href="https://github.com/GitHubKing23/ironthrivebeta"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary underline text-sm font-semibold hover:text-accent transition"

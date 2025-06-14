@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: GitHubKing23/web-dev-frontend- # ✅ Your GitHub repo
+  branch: main # or master
+
+media_folder: "public/assets"         # ✅ Updated folder
+public_folder: "/assets"              # ✅ Updated path
+
+site_url: https://webmasterypro.com   # ✅ Your site URL
+site_name: WebMasteryPro              # ✅ Friendly name
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    extension: mdx
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }  # ✅ Added author field
+      - { label: "Body", name: "body", widget: "markdown" }

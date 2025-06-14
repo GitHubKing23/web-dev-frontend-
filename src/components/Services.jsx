@@ -50,9 +50,9 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="bg-background py-20 px-6 font-body">
+    <section id="services" className="bg-background py-20 px-6 font-body relative overflow-hidden">
       <div className="max-w-7xl mx-auto text-center relative z-10">
-        {/* Accent divider */}
+        {/* Accent Divider */}
         <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
 
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-3">
@@ -64,20 +64,25 @@ export default function Services() {
 
         {/* Grid */}
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div
               key={service.slug}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all p-6 text-left"
               data-aos="fade-up"
+              data-aos-delay={index * 100}
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all p-6 text-left"
             >
-              <FontAwesomeIcon icon={service.icon} className="text-4xl text-primary mb-4" />
+              {/* Animated Icon */}
+              <div className="text-primary mb-4 transition-transform duration-300 group-hover:scale-110">
+                <FontAwesomeIcon icon={service.icon} className="text-4xl" />
+              </div>
+
               <h3 className="text-xl font-heading text-primary font-semibold mb-2">
                 {service.title}
               </h3>
               <p className="text-text text-sm mb-4 opacity-90">{service.description}</p>
               <Link
                 to={`/services/${service.slug}`}
-                className="text-accent font-semibold text-sm hover:underline"
+                className="inline-block text-accent font-semibold text-sm hover:underline transition-all hover:scale-[1.02]"
               >
                 Learn More →
               </Link>
@@ -86,8 +91,8 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Optional background blob */}
-      <div className="absolute top-[-50px] left-[-80px] w-[250px] h-[250px] bg-accent opacity-10 blur-3xl rounded-full z-0" />
+      {/* Decorative Background Element */}
+      <div className="absolute top-[-60px] right-[-80px] w-[250px] h-[250px] bg-accent opacity-10 blur-3xl rounded-full z-0"></div>
     </section>
   );
 }

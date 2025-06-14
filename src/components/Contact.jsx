@@ -2,80 +2,108 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-light py-20 px-6 font-body">
-      <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl font-heading font-bold text-primary mb-4">
-          Contact Us
+    <section id="contact" className="relative bg-light py-20 px-6 font-body overflow-hidden">
+      <div className="max-w-2xl mx-auto text-center relative z-10">
+        {/* Divider */}
+        <div className="w-14 h-1 bg-accent mx-auto mb-6 rounded-full" />
+
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-3">
+          📬 Contact Us
         </h2>
-        <p className="text-accent mb-8">
-          Let’s bring your vision to life. Fill out the form and we’ll get back to you.
+        <p className="text-text text-base md:text-lg mb-10 max-w-lg mx-auto">
+          Let’s bring your vision to life. Fill out the form below — we'll get back to you within 24 hours.
         </p>
+
         <form
           action="https://getform.io/f/bllyoejb"
           method="POST"
           className="space-y-6 text-left"
+          data-aos="fade-up"
         >
+          {/* Name */}
           <div>
-            <label className="block text-sm font-semibold mb-1 text-primary">Name</label>
+            <label className="block text-sm font-semibold mb-2 text-primary">Full Name</label>
             <input
               type="text"
               name="name"
               required
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Jane Doe"
+              className="w-full border border-muted bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition"
             />
           </div>
+
+          {/* Email */}
           <div>
-            <label className="block text-sm font-semibold mb-1 text-primary">Email</label>
+            <label className="block text-sm font-semibold mb-2 text-primary">Email Address</label>
             <input
               type="email"
               name="email"
               required
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="you@example.com"
+              className="w-full border border-muted bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition"
             />
           </div>
+
+          {/* Experience */}
           <div>
-            <label className="block text-sm font-semibold mb-1 text-primary">Message</label>
+            <label className="block text-sm font-semibold mb-2 text-primary">
+              Experience Level
+            </label>
+            <select
+              name="work-experience"
+              required
+              className="w-full border border-muted bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition"
+            >
+              <option value="">Select...</option>
+              <option value="one-year">0-1 years</option>
+              <option value="one-five-years">1-5 years</option>
+              <option value="five-plus">5+ years</option>
+            </select>
+          </div>
+
+          {/* Message */}
+          <div>
+            <label className="block text-sm font-semibold mb-2 text-primary">Message</label>
             <textarea
               name="message"
-              rows="4"
+              rows="5"
               required
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Tell us about your project..."
+              className="w-full border border-muted bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition"
             ></textarea>
           </div>
 
           {/* Honeypot */}
           <input type="hidden" name="_gotcha" style={{ display: 'none' }} />
 
-          {/* Checkbox */}
-          <label className="flex items-center gap-2 text-sm">
-            <input type="checkbox" name="subscribe" value="yes" defaultChecked />
-            Subscribe to updates
+          {/* Subscribe */}
+          <div className="flex items-center gap-2 text-sm mt-1">
+            <input
+              type="checkbox"
+              id="subscribe"
+              name="subscribe"
+              value="yes"
+              defaultChecked
+              className="accent-primary"
+            />
+            <label htmlFor="subscribe">Keep me updated with new launches & resources</label>
             <input type="hidden" name="subscribe" value="no" />
-          </label>
-
-          {/* Dropdown */}
-          <div>
-            <label className="block text-sm font-semibold mb-1 text-primary">Experience Level</label>
-            <select
-              name="work-experience"
-              className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
-            >
-              <option value="one-year">0-1 years</option>
-              <option value="one-five-years">1-5 years</option>
-            </select>
           </div>
 
           {/* Submit */}
-          <div className="text-center">
+          <div className="text-center pt-4">
             <button
               type="submit"
-              className="bg-primary text-white px-6 py-2 rounded-full hover:bg-accent transition"
+              className="bg-accent text-white font-semibold px-6 py-3 rounded-full hover:bg-yellow-500 transition-transform hover:scale-105 shadow-md"
             >
-              Send Message
+              🚀 Send Message
             </button>
           </div>
         </form>
       </div>
+
+      {/* Background Blob */}
+      <div className="absolute top-[-60px] right-[-80px] w-[250px] h-[250px] bg-primary opacity-10 blur-3xl rounded-full z-0"></div>
     </section>
   );
 }

@@ -1,47 +1,77 @@
-<!-- ✅ Favicon Debug Script -->
-<script>
-  window.addEventListener('load', () => {
-    const faviconSelector = "link[rel~='icon']";
-    const favicon = document.querySelector(faviconSelector);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebMasteryPro</title>
 
-    console.groupCollapsed("🔍 Favicon Debugging");
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon-v2.ico" />
 
-    if (!favicon) {
-      console.warn("⚠️ No favicon link tag found with selector:", faviconSelector);
-      console.info("💡 Ensure you have this in your <head>:");
-      console.log(`<link rel="icon" href="/favicon.ico" type="image/x-icon" />`);
-      console.groupEnd();
-      return;
-    }
+    <!-- ✅ Optional: Elegant Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-    console.log("✅ Favicon link element found:", favicon.outerHTML);
-    const faviconURL = favicon.href;
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N72N7V7SX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-9N72N7V7SX');
+    </script>
+  </head>
+  <body>
+    <!-- ✅ Favicon Debug Script -->
+    <script>
+      window.addEventListener('load', () => {
+        const faviconSelector = "link[rel~='icon']";
+        const favicon = document.querySelector(faviconSelector);
 
-    const testImg = new Image();
-    testImg.src = faviconURL;
+        console.groupCollapsed("🔍 Favicon Debugging");
 
-    testImg.onload = () => {
-      console.log("🟢 Favicon image loaded successfully:", faviconURL);
-      console.groupEnd();
-    };
-
-    testImg.onerror = () => {
-      console.error("🔴 Favicon failed to load:", faviconURL);
-      console.info("🔁 Attempting direct fetch for more info...");
-
-      fetch(faviconURL)
-        .then(res => {
-          if (!res.ok) {
-            console.error("❌ Favicon fetch failed with status:", res.status);
-          } else {
-            console.log("✅ Favicon fetch returned status:", res.status);
-          }
+        if (!favicon) {
+          console.warn("⚠️ No favicon link tag found with selector:", faviconSelector);
+          console.info("💡 Ensure you have this in your <head>:");
+          console.log(`<link rel="icon" href="/favicon.ico" type="image/x-icon" />`);
           console.groupEnd();
-        })
-        .catch(err => {
-          console.error("❌ Favicon fetch threw an error:", err);
+          return;
+        }
+
+        console.log("✅ Favicon link element found:", favicon.outerHTML);
+        const faviconURL = favicon.href;
+
+        const testImg = new Image();
+        testImg.src = faviconURL;
+
+        testImg.onload = () => {
+          console.log("🟢 Favicon image loaded successfully:", faviconURL);
           console.groupEnd();
-        });
-    };
-  });
-</script>
+        };
+
+        testImg.onerror = () => {
+          console.error("🔴 Favicon failed to load:", faviconURL);
+          console.info("🔁 Attempting direct fetch for more info...");
+
+          fetch(faviconURL)
+            .then((res) => {
+              if (!res.ok) {
+                console.error("❌ Favicon fetch failed with status:", res.status);
+              } else {
+                console.log("✅ Favicon fetch returned status:", res.status);
+              }
+              console.groupEnd();
+            })
+            .catch((err) => {
+              console.error("❌ Favicon fetch threw an error:", err);
+              console.groupEnd();
+            });
+        };
+      });
+    </script>
+  </body>
+</html>
