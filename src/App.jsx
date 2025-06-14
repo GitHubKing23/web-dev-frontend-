@@ -15,6 +15,7 @@ import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
 import DomainSearchPage from './pages/DomainSearch.jsx';
+import ServiceDetail from './pages/services/[slug].jsx'; // ✅ Corrected path
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} /> {/* ✅ This will now work */}
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
