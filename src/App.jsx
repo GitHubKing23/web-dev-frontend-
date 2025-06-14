@@ -14,6 +14,7 @@ import ToolsPage from './pages/Tools.jsx';
 import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
+import ServiceDetail from './pages/ServiceDetail.jsx';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
