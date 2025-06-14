@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { parseFrontmatter } from '../../util/simpleFrontmatter.js';
-import calcReadTime from '../../util/calcReadTime.js';
+import { parseFrontmatter } from '../util/simpleFrontmatter.js'; // ✅ Adjusted path
+import calcReadTime from '../util/calcReadTime.js'; // ✅ Adjusted path
 
-const posts = import.meta.glob('../../../content/blog/*.mdx', { eager: true });
-const rawPosts = import.meta.glob('../../../content/blog/*.mdx', {
+// Assuming .mdx files are under: /content/blog/
+const posts = import.meta.glob('../../content/blog/*.mdx', { eager: true });
+const rawPosts = import.meta.glob('../../content/blog/*.mdx', {
   eager: true,
   as: 'raw',
 });
@@ -26,7 +27,9 @@ export default function BlogPost() {
 
   const title = metadata?.title || 'Untitled';
   const author = metadata?.author || 'Unknown';
-  const date = metadata?.date ? new Date(metadata.date).toLocaleDateString() : 'Unknown Date';
+  const date = metadata?.date
+    ? new Date(metadata.date).toLocaleDateString()
+    : 'Unknown Date';
   const readTime = calcReadTime(content);
   const Component = post.default;
 
