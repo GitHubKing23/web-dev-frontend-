@@ -17,6 +17,7 @@ import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
 import DomainSearchPage from './pages/DomainSearch.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx'; // ✅ Corrected this as well
+import HomeServicesPackage from './pages/HomeServicesPackage.jsx'; // ✅ NEW: Home Services landing page
 
 function App() {
   return (
@@ -31,12 +32,13 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPost />} /> {/* ✅ Dynamic blog route */}
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/arcard" element={<ArCardPage />} />
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/domains" element={<DomainSearchPage />} />
+          <Route path="/home-services" element={<HomeServicesPackage />} /> {/* ✅ NEW route */}
         </Routes>
       </main>
       <Footer />
