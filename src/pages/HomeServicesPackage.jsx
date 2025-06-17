@@ -5,7 +5,6 @@ const HomeServicesPackage = () => {
     <div className="bg-gray-50 text-gray-800 scroll-smooth">
       {/* Hero Section */}
       <header className="relative h-screen overflow-hidden">
-        {/* Background Image */}
         <div
           className="absolute inset-0 bg-center bg-cover transform transition-transform duration-700 scale-100 hover:scale-105"
           style={{
@@ -14,10 +13,8 @@ const HomeServicesPackage = () => {
           }}
         ></div>
 
-        {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10"></div>
 
-        {/* Content */}
         <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-white text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg leading-tight">
             Beautiful Websites for Landscapers & Contractors
@@ -78,16 +75,22 @@ const HomeServicesPackage = () => {
       {/* Contact Form */}
       <section id="contact" className="max-w-2xl mx-auto py-12 px-4">
         <h2 className="text-2xl font-semibold mb-6 text-center">Request a Callback</h2>
-        <form className="space-y-4">
+        <form
+          method="POST"
+          action="https://getform.io/f/bllyoejb"
+          className="space-y-4"
+        >
           <div>
             <label className="block mb-1 font-medium" htmlFor="name">
               Name
             </label>
             <input
               id="name"
+              name="name"
               type="text"
               className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Your name"
+              required
             />
           </div>
           <div>
@@ -96,9 +99,11 @@ const HomeServicesPackage = () => {
             </label>
             <input
               id="phone"
+              name="phone"
               type="tel"
               className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="555-123-4567"
+              required
             />
           </div>
           <div>
@@ -107,9 +112,11 @@ const HomeServicesPackage = () => {
             </label>
             <input
               id="email"
+              name="email"
               type="email"
               className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="you@example.com"
+              required
             />
           </div>
           <div>
@@ -118,9 +125,11 @@ const HomeServicesPackage = () => {
             </label>
             <textarea
               id="message"
+              name="message"
               rows="4"
               className="w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Tell us about your project"
+              required
             ></textarea>
           </div>
           <button
