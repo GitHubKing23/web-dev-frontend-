@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const HomeServicesPackage = () => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const res = await fetch('https://getform.io/f/bllyoejb', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      alert('Failed to submit form.');
+    }
+  };
+
   return (
     <div className="bg-gray-50 text-gray-800 scroll-smooth">
       {/* Hero Section */}
@@ -75,11 +99,14 @@ const HomeServicesPackage = () => {
       {/* Contact Form */}
       <section id="contact" className="max-w-2xl mx-auto py-12 px-4">
         <h2 className="text-2xl font-semibold mb-6 text-center">Request a Callback</h2>
-        <form
-          method="POST"
-          action="https://getform.io/f/bllyoejb"
-          className="space-y-4"
-        >
+
+        {submitted && (
+          <div className="bg-green-100 text-green-800 border border-green-400 rounded px-4 py-3 mb-6 text-center">
+            ✅ Thank you! Your message has been sent.
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block mb-1 font-medium" htmlFor="name">
               Name
