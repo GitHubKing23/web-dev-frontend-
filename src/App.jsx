@@ -10,18 +10,22 @@ import ProjectsPage from './pages/Projects.jsx';
 import ContactPage from './pages/Contact.jsx';
 import AboutPage from './pages/About.jsx';
 import BlogPage from './pages/Blog.jsx';
-import BlogPost from './pages/BlogPost.jsx'; // ✅ New import for dynamic blog pages
+import BlogPost from './pages/BlogPost.jsx';
 import ToolsPage from './pages/Tools.jsx';
 import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
 import DomainSearchPage from './pages/DomainSearch.jsx';
-import ServiceDetail from './pages/ServiceDetail.jsx'; // ✅ Corrected this as well
-import HomeServicesPackage from './pages/HomeServicesPackage.jsx'; // ✅ NEW: Home Services landing page
+import ServiceDetail from './pages/ServiceDetail.jsx';
+import HomeServicesPackage from './pages/HomeServicesPackage.jsx';
+
+// ✅ NEW: Google Analytics Tracker
+import Analytics from './Analytics.jsx';
 
 function App() {
   return (
     <Router>
+      <Analytics /> {/* ✅ Track route changes */}
       <Navbar />
       <main className="pt-20 space-y-20">
         <Routes>
@@ -38,7 +42,7 @@ function App() {
           <Route path="/arcard" element={<ArCardPage />} />
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/domains" element={<DomainSearchPage />} />
-          <Route path="/home-services" element={<HomeServicesPackage />} /> {/* ✅ NEW route */}
+          <Route path="/home-services" element={<HomeServicesPackage />} />
         </Routes>
       </main>
       <Footer />

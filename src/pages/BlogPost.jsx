@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { parseFrontmatter } from '../util/simpleFrontmatter.js'; // ✅ Adjusted path
-import calcReadTime from '../util/calcReadTime.js'; // ✅ Adjusted path
+import { Helmet } from 'react-helmet'; // ✅ SEO Head Injection
+import { parseFrontmatter } from '../util/simpleFrontmatter.js';
+import calcReadTime from '../util/calcReadTime.js';
 
-// Assuming .mdx files are under: /content/blog/
 const posts = import.meta.glob('../../content/blog/*.mdx', { eager: true });
 const rawPosts = import.meta.glob('../../content/blog/*.mdx', {
   eager: true,
@@ -27,20 +27,53 @@ export default function BlogPost() {
 
   const title = metadata?.title || 'Untitled';
   const author = metadata?.author || 'Unknown';
-  const date = metadata?.date
-    ? new Date(metadata.date).toLocaleDateString()
-    : 'Unknown Date';
+  const dateISO = metadata?.date || new Date().toISOString();
+  const formattedDate = new Date(dateISO).toLocaleDateString();
   const readTime = calcReadTime(content);
   const Component = post.default;
 
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    author: {
+      '@type': 'Person',
+      name: author,
+    },
+    datePublished: dateISO,
+    dateModified: dateISO,
+    articleBody: content.slice(0, 200), // Shortened for preview
+    wordCount: content.split(' ').length,
+    publisher: {
+      '@type': 'Organization',
+      name: 'WebMasteryPro',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://webmasterypro.com/assets/logo.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://webmasterypro.com/blog/${slug}`,
+    },
+  };
+
   return (
     <article className="max-w-3xl mx-auto px-6 pt-24 pb-16 bg-white shadow-lg rounded-lg font-body text-text">
+      <Helmet>
+        <title>{title} | WebMasteryPro</title>
+        <meta name="description" content={`Read our blog post: ${title}`} />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
       <header className="mb-10 border-b border-gray-200 pb-6">
         <h1 className="text-4xl font-heading text-primary tracking-tight leading-tight mb-3">
           {title}
         </h1>
         <p className="text-sm text-gray-500 italic">
-          {author} • {date} • {readTime} min read
+          {author} • {formattedDate} • {readTime} min read
         </p>
       </header>
 
