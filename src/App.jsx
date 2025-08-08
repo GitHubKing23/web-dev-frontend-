@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import ChatWidget from './components/ChatWidget.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx'; // ✅ NEW
 
 import Home from './pages/Home.jsx';
 import ServicesPage from './pages/Services.jsx';
@@ -19,13 +21,14 @@ import DomainSearchPage from './pages/DomainSearch.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import HomeServicesPackage from './pages/HomeServicesPackage.jsx';
 
-// ✅ NEW: Google Analytics Tracker
+// ✅ Google Analytics Tracker
 import Analytics from './Analytics.jsx';
 
 function App() {
   return (
     <Router>
-      <Analytics /> {/* ✅ Track route changes */}
+      <Analytics />
+      <ScrollToTop /> {/* ✅ Scroll to top on route change */}
       <Navbar />
       <main className="pt-20 space-y-20">
         <Routes>
@@ -46,6 +49,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <ChatWidget /> {/* ✅ Chat Widget stays at the bottom */}
     </Router>
   );
 }

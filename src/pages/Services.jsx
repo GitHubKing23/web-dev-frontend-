@@ -5,7 +5,8 @@ import {
   faChartLine,
   faCogs,
   faMobileAlt,
-  faBullhorn
+  faBullhorn,
+  faVideo
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -39,6 +40,12 @@ const services = [
     title: 'Social Media Management',
     description: 'We grow your brand presence across all major platforms.',
     icon: faBullhorn,
+  },
+  {
+    slug: 'twitch-upgrade',
+    title: 'Twitch Streamer Upgrade',
+    description: 'Upgrade your Twitch with overlays, 24/7 streaming, and animations.',
+    icon: faVideo,
   },
 ];
 

@@ -8,7 +8,8 @@ import {
   faChartLine,
   faCogs,
   faMobileAlt,
-  faBullhorn
+  faBullhorn,
+  faVideo // 🎥 Icon for Twitch Stream Upgrade
 } from '@fortawesome/free-solid-svg-icons';
 
 const services = [
@@ -41,6 +42,12 @@ const services = [
     description: 'We grow your brand presence across all major platforms.',
     icon: faBullhorn,
     slug: 'social-media-management',
+  },
+  {
+    title: 'Twitch Stream Upgrade',
+    description: 'Custom overlays, alerts, and 24/7 stream setup to boost your Twitch game.',
+    icon: faVideo,
+    slug: 'twitch-stream-upgrade',
   },
 ];
 
