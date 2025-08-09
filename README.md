@@ -88,3 +88,12 @@ If patching fails because files already exist, review the `.rej` files and apply
    cause errors like `Cannot find module '@mdx-js/rollup'` when running
    `npm run dev`.
 >>>>>>> theirs
+
+### Environment variables
+
+To enable the registration email feature, set the following variables in your Netlify project or a local `.env` file:
+
+- `PERSONAL_EMAIL` – destination address for form submissions. If unset, messages are delivered to `wise11jeff@gmail.com`.
+- `SENDGRID_API_KEY` – API key used by the serverless function to send mail
+
+These are required for the `netlify/functions/sendRegistration.js` function.
