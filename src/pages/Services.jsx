@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCode,
   faChartLine,
@@ -8,78 +11,90 @@ import {
   faBullhorn,
   faVideo
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const services = [
   {
-    slug: 'web-development',
     title: 'Web Development',
     description: 'Modern, responsive websites tailored to your brand.',
     icon: faCode,
+    slug: 'web-development',
   },
   {
-    slug: 'seo-optimization',
     title: 'SEO Optimization',
     description: 'Boost your visibility with proven search engine strategies.',
     icon: faChartLine,
+    slug: 'seo-optimization',
   },
   {
-    slug: 'cms-integration',
     title: 'CMS Integration',
     description: 'Flexible, easy-to-manage content with headless CMS options.',
     icon: faCogs,
+    slug: 'cms-integration',
   },
   {
-    slug: 'app-development',
     title: 'App Development',
     description: 'Cross-platform mobile and web apps built for performance.',
     icon: faMobileAlt,
+    slug: 'app-development',
   },
   {
-    slug: 'social-media-management',
     title: 'Social Media Management',
     description: 'We grow your brand presence across all major platforms.',
     icon: faBullhorn,
+    slug: 'social-media-management',
   },
   {
-    slug: 'twitch-upgrade',
-    title: 'Twitch Streamer Upgrade',
-    description: 'Upgrade your Twitch with overlays, 24/7 streaming, and animations.',
+    title: 'Twitch Stream Upgrade',
+    description: 'Custom overlays, alerts, and 24/7 stream setup to boost your Twitch game.',
     icon: faVideo,
+    slug: 'twitch-stream-upgrade', // ✅ match ServiceDetail
   },
 ];
 
-export default function ServicesPage() {
+export default function Services() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
-    <section className="pt-28 px-6 font-body bg-light">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl font-heading font-bold text-primary mb-4">
-          What We Offer
+    <section id="services" className="bg-background py-20 px-6 font-body relative overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center relative z-10">
+        <div className="w-16 h-1 bg-accent mx-auto mb-6 rounded-full" />
+        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-3">
+          💼 What We Offer
         </h2>
-        <p className="text-accent mb-12 text-lg">
-          Explore the full range of services designed to grow your digital presence.
+        <p className="text-text text-base md:text-lg mb-12 max-w-2xl mx-auto">
+          Solutions tailored to elevate your brand online — across web, mobile, search, and social.
         </p>
-        <div className="grid gap-8 md:grid-cols-3">
-          {services.map((service) => (
+
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+          {services.map((service, index) => (
             <div
               key={service.slug}
-              className="bg-white shadow-lg rounded-lg p-6 transition hover:-translate-y-1 hover:shadow-xl"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              className="group bg-white rounded-xl shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all p-6 text-left"
             >
-              <FontAwesomeIcon icon={service.icon} className="text-4xl text-primary mb-4" />
-              <h3 className="text-xl font-semibold text-primary mb-2">
+              <div className="text-primary mb-4 transition-transform duration-300 group-hover:scale-110">
+                <FontAwesomeIcon icon={service.icon} className="text-4xl" />
+              </div>
+
+              <h3 className="text-xl font-heading text-primary font-semibold mb-2">
                 {service.title}
               </h3>
-              <p className="text-accent mb-4">{service.description}</p>
+              <p className="text-text text-sm mb-4 opacity-90">{service.description}</p>
+
               <Link
                 to={`/services/${service.slug}`}
-                className="text-primary underline text-sm hover:text-accent transition"
-              >
+                className="inline-block text-accent font-semibold text-sm hover:underline transition-all hover:scale-[1.02]">
                 Learn More →
               </Link>
             </div>
           ))}
         </div>
       </div>
+
+      <div className="absolute top-[-60px] right-[-80px] w-[250px] h-[250px] bg-accent opacity-10 blur-3xl rounded-full z-0" />
     </section>
   );
 }

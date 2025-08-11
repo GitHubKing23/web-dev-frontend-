@@ -8,26 +8,91 @@ const serviceDetails = {
       'We create modern, responsive, and scalable websites tailored to your business needs. Whether you need a landing page, portfolio, or full-stack web app — we build to impress.',
     details: [
       'Responsive design for all screen sizes',
-      'Custom frontend using React or Tailwind CSS',
+      'Custom frontend using React + Tailwind CSS',
       'Full-stack options with Node.js and MongoDB',
+      'Accessibility and performance best practices',
       'Ongoing support and maintenance plans',
     ],
-    tools: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB'],
+    tools: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Vite', 'Netlify'],
+    tags: ['Responsive', 'SEO-Ready', 'Fast', 'Accessible'],
     cta: 'Start Your Website',
   },
+
   'seo-optimization': {
     title: 'SEO Optimization',
     description:
       'Boost your search engine visibility with keyword targeting, on-page optimization, and technical SEO audits to outrank your competition.',
     details: [
       'Keyword research and content strategy',
-      'Meta tags, schema markup, and speed optimization',
-      'Backlink analysis and domain authority improvements',
+      'On-page SEO: titles, meta, schema',
+      'Technical SEO: speed, sitemaps, robots',
+      'Local SEO and Google Business Profile',
+      'Backlink profile and competitor analysis',
     ],
-    tools: ['Google Search Console', 'Ahrefs', 'Yoast SEO'],
+    tools: ['Google Search Console', 'Ahrefs', 'Screaming Frog', 'PageSpeed Insights'],
+    tags: ['On-Page', 'Technical', 'Local SEO', 'Schema'],
     cta: 'Request an SEO Audit',
   },
-  // Add more services here as needed...
+
+  'cms-integration': {
+    title: 'CMS Integration',
+    description:
+      'Flexible, easy-to-manage content using headless CMS options that scale with your team.',
+    details: [
+      'Content modeling and roles/permissions',
+      'Headless CMS setup and theming',
+      'Preview environments & editorial workflow',
+      'Migration from legacy CMS',
+    ],
+    tools: ['Contentful', 'Strapi', 'Sanity', 'Netlify CMS'],
+    tags: ['Headless', 'Scalable', 'Editor-Friendly'],
+    cta: 'Integrate a CMS',
+  },
+
+  'app-development': {
+    title: 'App Development',
+    description:
+      'Cross-platform web and mobile applications focused on speed, UX, and reliability.',
+    details: [
+      'API-driven architecture',
+      'Authentication & secure data flows',
+      'PWA features (offline, installable)',
+      'CI/CD and app store readiness (if needed)',
+    ],
+    tools: ['React', 'React Native', 'Node.js', 'PostgreSQL'],
+    tags: ['Cross-Platform', 'API-Driven', 'PWA'],
+    cta: 'Start Your App',
+  },
+
+  'social-media-management': {
+    title: 'Social Media Management',
+    description:
+      'We grow your brand presence and keep your feeds active with strategic content.',
+    details: [
+      'Content calendar and brand voice',
+      'Short-form video & repurposing',
+      'Community management and engagement',
+      'Ad planning and reporting',
+    ],
+    tools: ['Meta Business Suite', 'Buffer', 'Hootsuite', 'Canva'],
+    tags: ['Content', 'Engagement', 'Ads'],
+    cta: 'Grow My Socials',
+  },
+
+  'twitch-stream-upgrade': {
+    title: 'Twitch Stream Upgrade',
+    description:
+      'Custom overlays, alert animations, and 24/7 stream setup to boost your Twitch presence.',
+    details: [
+      'Custom overlays and scene collections',
+      'Animated alerts and stingers',
+      'Chatbot & moderation setup',
+      '24/7 streaming rig configuration',
+    ],
+    tools: ['OBS Studio', 'Streamlabs', 'Blender', 'After Effects'],
+    tags: ['Overlays', 'Alerts', '24/7 Streaming'],
+    cta: 'Upgrade My Stream',
+  },
 };
 
 export default function ServiceDetail() {
@@ -63,6 +128,22 @@ export default function ServiceDetail() {
         ))}
       </ul>
 
+      {!!service.tags?.length && (
+        <>
+          <h2 className="text-2xl font-semibold text-accent mb-3">Tags:</h2>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {service.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-xs shadow-sm"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
+
       <h2 className="text-2xl font-semibold text-accent mb-3">Tools We Use:</h2>
       <div className="flex flex-wrap gap-3 mb-8">
         {service.tools.map((tool, index) => (
@@ -75,6 +156,7 @@ export default function ServiceDetail() {
         ))}
       </div>
 
+      {/* CTA to Contact */}
       <Link
         to="/contact"
         className="bg-accent text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block text-center"
