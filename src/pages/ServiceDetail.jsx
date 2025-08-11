@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 const serviceDetails = {
   'web-development': {
@@ -25,70 +25,28 @@ const serviceDetails = {
       'Backlink analysis and domain authority improvements',
     ],
     tools: ['Google Search Console', 'Ahrefs', 'Yoast SEO'],
-    cta: 'Optimize My Site',
+    cta: 'Request an SEO Audit',
   },
-  'cms-integration': {
-    title: 'CMS Integration',
-    description:
-      'Take control of your content with seamless CMS integrations. We offer headless CMS setups or traditional platforms based on your needs.',
-    details: [
-      'Headless CMS like Sanity or Strapi',
-      'WordPress or Shopify integration',
-      'Easy content editing without touching code',
-    ],
-    tools: ['Sanity', 'Strapi', 'WordPress', 'Shopify'],
-    cta: 'Integrate My CMS',
-  },
-  'app-development': {
-    title: 'App Development',
-    description:
-      'Cross-platform apps for Android, iOS, or web — designed for performance and scale. From MVPs to production-ready apps, we handle the full stack.',
-    details: [
-      'Cross-platform development with Flutter or React Native',
-      'Secure backend APIs and database integration',
-      'Real-time features, push notifications, and more',
-    ],
-    tools: ['Flutter', 'React Native', 'Firebase', 'Express.js'],
-    cta: 'Build My App',
-  },
-  'social-media-management': {
-    title: 'Social Media Management',
-    description:
-      'Let us handle your content, posting schedule, and growth strategy across all major platforms — Facebook, Instagram, X, TikTok, and more.',
-    details: [
-      'Content calendar and scheduling',
-      'Engagement tracking and analytics',
-      'Ad campaign management and boosting',
-    ],
-    tools: ['Hootsuite', 'Meta Business Suite', 'Canva'],
-    cta: 'Grow My Audience',
-  },
-  'twitch-upgrade': {
-    title: 'Twitch Streamer Upgrade',
-    description:
-      'Level up your Twitch channel with professionally designed stream layouts, smart automation, and immersive viewer engagement tools.',
-    details: [
-      'Custom Twitch overlays (BRB, Starting Soon, Live)',
-      'Follower-triggered animations with VFX',
-      '24/7 streaming setup using GPU servers',
-      'Stream alerts and audio-reactive visuals',
-    ],
-    tools: ['Blender', 'OBS Studio', 'Streamlabs', 'RunPod', 'After Effects'],
-    cta: 'Upgrade My Stream',
-  },
+  // Add more services here as needed...
 };
 
 export default function ServiceDetail() {
-  const { slug } = useParams();
-  const service = serviceDetails[slug];
+  const { serviceId } = useParams();
+  const service = serviceDetails[serviceId];
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-center px-4">
-        <div>
-          <h2 className="text-3xl font-bold text-red-600 mb-2">Service Not Found</h2>
-          <p className="text-gray-600">Please check the URL or return to the services page.</p>
-        </div>
+      <div className="pt-28 pb-20 px-6 font-body bg-white text-left max-w-4xl mx-auto">
+        <h1 className="text-3xl font-heading font-bold text-primary mb-4">Service Not Found</h1>
+        <p className="text-gray-700 mb-6">
+          The service you’re looking for doesn’t exist or has been moved.
+        </p>
+        <Link
+          to="/services"
+          className="bg-primary text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block"
+        >
+          View All Services
+        </Link>
       </div>
     );
   }
@@ -117,9 +75,12 @@ export default function ServiceDetail() {
         ))}
       </div>
 
-      <button className="bg-accent text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition">
+      <Link
+        to="/contact"
+        className="bg-accent text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block text-center"
+      >
         {service.cta}
-      </button>
+      </Link>
     </div>
   );
 }
