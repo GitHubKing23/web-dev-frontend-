@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ChatWidget from './components/ChatWidget.jsx';
-import ScrollToTop from './components/ScrollToTop.jsx'; // ✅ NEW
+import ScrollToTop from './components/ScrollToTop.jsx'; // ✅ Scroll to top on route change
 
 import Home from './pages/Home.jsx';
-import ServicesPage from './pages/Services.jsx';
+import Services from './pages/Services.jsx';              // ✅ Services list page
 import ProjectsPage from './pages/Projects.jsx';
 import ContactPage from './pages/Contact.jsx';
 import AboutPage from './pages/About.jsx';
@@ -18,10 +18,10 @@ import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
 import DomainSearchPage from './pages/DomainSearch.jsx';
-import ServiceDetail from './pages/ServiceDetail.jsx';
+import ServiceDetail from './pages/ServiceDetail.jsx';    // ✅ Detail page reads :serviceId
 import HomeServicesPackage from './pages/HomeServicesPackage.jsx';
 
-// ✅ New import for AI Tool page
+// ✅ AI Tool page
 import AIToolPage from './pages/AIToolPage.jsx';
 
 // ✅ Google Analytics Tracker
@@ -31,13 +31,17 @@ function App() {
   return (
     <Router>
       <Analytics />
-      <ScrollToTop /> {/* ✅ Scroll to top on route change */}
+      <ScrollToTop />
       <Navbar />
       <main className="pt-20 space-y-20">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
+
+          {/* Services */}
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
+
+          {/* Other pages */}
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -49,13 +53,13 @@ function App() {
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/domains" element={<DomainSearchPage />} />
           <Route path="/home-services" element={<HomeServicesPackage />} />
-          
-          {/* ✅ New AI Tool route */}
+
+          {/* AI Tool */}
           <Route path="/ai" element={<AIToolPage />} />
         </Routes>
       </main>
       <Footer />
-      <ChatWidget /> {/* ✅ Chat Widget stays at the bottom */}
+      <ChatWidget />
     </Router>
   );
 }

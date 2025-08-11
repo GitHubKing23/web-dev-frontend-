@@ -156,7 +156,6 @@ export default function ServiceDetail() {
         ))}
       </div>
 
-      {/* CTA to Contact */}
       <Link
         to="/contact"
         className="bg-accent text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block text-center"
