@@ -1,134 +1,167 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const serviceDetails = {
   'web-development': {
     title: 'Web Development',
     description:
-      'We build high-performance, elegant websites that adapt to your business and engage users on any device.',
+      'We create modern, responsive, and scalable websites tailored to your business needs. Whether you need a landing page, portfolio, or full-stack web app — we build to impress.',
     details: [
-      'Custom React or Next.js websites',
-      'Responsive & mobile-first design',
-      'Landing pages, blogs, eCommerce, dashboards',
-      'Built with SEO, speed, and accessibility in mind',
+      'Responsive design for all screen sizes',
+      'Custom frontend using React + Tailwind CSS',
+      'Full-stack options with Node.js and MongoDB',
+      'Accessibility and performance best practices',
+      'Ongoing support and maintenance plans',
     ],
-    tools: ['React.js', 'Next.js', 'Tailwind CSS', 'Figma', 'Netlify'],
-    cta: 'Start My Website',
+    tools: ['React', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Vite', 'Netlify'],
+    tags: ['Responsive', 'SEO-Ready', 'Fast', 'Accessible'],
+    cta: 'Start Your Website',
   },
+
   'seo-optimization': {
     title: 'SEO Optimization',
     description:
-      'We increase your search engine visibility with proven white-hat strategies that work long-term.',
+      'Boost your search engine visibility with keyword targeting, on-page optimization, and technical SEO audits to outrank your competition.',
     details: [
-      'Keyword research & strategy',
-      'On-page SEO improvements (title tags, headers, etc.)',
-      'Technical audits and fixes',
-      'Backlink-building campaigns',
+      'Keyword research and content strategy',
+      'On-page SEO: titles, meta, schema',
+      'Technical SEO: speed, sitemaps, robots',
+      'Local SEO and Google Business Profile',
+      'Backlink profile and competitor analysis',
     ],
-    tools: ['Google Search Console', 'Ahrefs', 'SEMRush', 'Screaming Frog'],
-    cta: 'Boost My SEO',
+    tools: ['Google Search Console', 'Ahrefs', 'Screaming Frog', 'PageSpeed Insights'],
+    tags: ['On-Page', 'Technical', 'Local SEO', 'Schema'],
+    cta: 'Request an SEO Audit',
   },
+
   'cms-integration': {
     title: 'CMS Integration',
     description:
-      'Empower your team to update your content easily with flexible, secure, and scalable CMS solutions.',
+      'Flexible, easy-to-manage content using headless CMS options that scale with your team.',
     details: [
-      'WordPress setup and theme customization',
-      'Headless CMS integration (Sanity, Strapi, Contentful)',
-      'Secure backend with access roles',
-      'Structured content modeling for SEO',
+      'Content modeling and roles/permissions',
+      'Headless CMS setup and theming',
+      'Preview environments & editorial workflow',
+      'Migration from legacy CMS',
     ],
-    tools: ['WordPress', 'Sanity', 'Contentful', 'Strapi', 'GraphQL'],
-    cta: 'Get My CMS Setup',
+    tools: ['Contentful', 'Strapi', 'Sanity', 'Netlify CMS'],
+    tags: ['Headless', 'Scalable', 'Editor-Friendly'],
+    cta: 'Integrate a CMS',
   },
+
   'app-development': {
     title: 'App Development',
     description:
-      'We develop powerful cross-platform apps for mobile and web, designed to scale and deliver real value.',
+      'Cross-platform web and mobile applications focused on speed, UX, and reliability.',
     details: [
-      'Flutter or React Native mobile apps',
-      'Progressive Web Apps (PWAs)',
-      'Backend API integration (REST/GraphQL)',
-      'Authentication, database & deployment',
+      'API-driven architecture',
+      'Authentication & secure data flows',
+      'PWA features (offline, installable)',
+      'CI/CD and app store readiness (if needed)',
     ],
-    tools: ['Flutter', 'React Native', 'Firebase', 'Supabase', 'Node.js'],
-    cta: 'Build My App',
+    tools: ['React', 'React Native', 'Node.js', 'PostgreSQL'],
+    tags: ['Cross-Platform', 'API-Driven', 'PWA'],
+    cta: 'Start Your App',
   },
+
   'social-media-management': {
     title: 'Social Media Management',
     description:
-      'Let us manage your brand voice, visuals, and engagement across platforms so you can focus on your business.',
+      'We grow your brand presence and keep your feeds active with strategic content.',
     details: [
-      'Content calendar planning & strategy',
-      'Post design & scheduling (Reels, carousels, TikToks)',
-      'Community management & engagement',
-      'Analytics reports & campaign optimization',
+      'Content calendar and brand voice',
+      'Short-form video & repurposing',
+      'Community management and engagement',
+      'Ad planning and reporting',
     ],
-    tools: ['Canva', 'Hootsuite', 'Buffer', 'Meta Suite', 'TikTok Studio'],
-    cta: 'Boost My Socials',
+    tools: ['Meta Business Suite', 'Buffer', 'Hootsuite', 'Canva'],
+    tags: ['Content', 'Engagement', 'Ads'],
+    cta: 'Grow My Socials',
+  },
+
+  'twitch-stream-upgrade': {
+    title: 'Twitch Stream Upgrade',
+    description:
+      'Custom overlays, alert animations, and 24/7 stream setup to boost your Twitch presence.',
+    details: [
+      'Custom overlays and scene collections',
+      'Animated alerts and stingers',
+      'Chatbot & moderation setup',
+      '24/7 streaming rig configuration',
+    ],
+    tools: ['OBS Studio', 'Streamlabs', 'Blender', 'After Effects'],
+    tags: ['Overlays', 'Alerts', '24/7 Streaming'],
+    cta: 'Upgrade My Stream',
   },
 };
 
 export default function ServiceDetail() {
-  const { slug } = useParams();
-  const service = serviceDetails[slug];
-
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
+  const { serviceId } = useParams();
+  const service = serviceDetails[serviceId];
 
   if (!service) {
     return (
-      <div className="text-center pt-32 px-6">
-        <h1 className="text-3xl font-bold text-primary mb-4">Service Not Found</h1>
-        <p className="text-accent text-lg">The service you’re looking for doesn’t exist.</p>
+      <div className="pt-28 pb-20 px-6 font-body bg-white text-left max-w-4xl mx-auto">
+        <h1 className="text-3xl font-heading font-bold text-primary mb-4">Service Not Found</h1>
+        <p className="text-gray-700 mb-6">
+          The service you’re looking for doesn’t exist or has been moved.
+        </p>
+        <Link
+          to="/services"
+          className="bg-primary text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block"
+        >
+          View All Services
+        </Link>
       </div>
     );
   }
 
   return (
-    <section className="pt-32 px-4 md:px-6 font-body">
-      <div
-        className="max-w-3xl mx-auto bg-white shadow-xl rounded-xl p-8 md:p-10"
-        data-aos="fade-up"
-      >
-        <h1 className="text-4xl font-bold text-primary mb-4">{service.title}</h1>
-        <p className="text-accent text-lg mb-6">{service.description}</p>
+    <div className="pt-28 pb-20 px-6 font-body bg-white text-left max-w-4xl mx-auto">
+      <h1 className="text-4xl font-heading font-bold text-primary mb-4">{service.title}</h1>
+      <p className="text-lg text-gray-700 mb-8">{service.description}</p>
 
-        <div className="mb-6" data-aos="fade-right">
-          <h2 className="text-2xl font-semibold text-primary mb-2">What’s Included:</h2>
-          <ul className="list-disc pl-6 text-accent space-y-1">
-            {service.details.map((point, index) => (
-              <li key={index} className="leading-relaxed">{point}</li>
-            ))}
-          </ul>
-        </div>
+      <h2 className="text-2xl font-semibold text-accent mb-3">What’s Included:</h2>
+      <ul className="list-disc list-inside text-gray-800 mb-6">
+        {service.details.map((item, index) => (
+          <li key={index} className="mb-2">{item}</li>
+        ))}
+      </ul>
 
-        <div className="mb-8" data-aos="fade-left">
-          <h2 className="text-2xl font-semibold text-primary mb-2">Technologies / Tools:</h2>
-          <div className="flex flex-wrap gap-3 text-accent">
-            {service.tools.map((tool, index) => (
+      {!!service.tags?.length && (
+        <>
+          <h2 className="text-2xl font-semibold text-accent mb-3">Tags:</h2>
+          <div className="flex flex-wrap gap-2 mb-8">
+            {service.tags.map((tag, idx) => (
               <span
-                key={index}
-                className="bg-light px-3 py-1 rounded-full border border-primary text-sm font-medium hover:bg-primary hover:text-white transition"
+                key={idx}
+                className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-xs shadow-sm"
               >
-                {tool}
+                {tag}
               </span>
             ))}
           </div>
-        </div>
+        </>
+      )}
 
-        <div className="text-center mt-8" data-aos="zoom-in">
-          <Link
-            to="/contact"
-            className="inline-block bg-primary text-white px-8 py-3 text-lg font-semibold rounded-full hover:bg-accent hover:scale-105 transition-transform duration-300"
+      <h2 className="text-2xl font-semibold text-accent mb-3">Tools We Use:</h2>
+      <div className="flex flex-wrap gap-3 mb-8">
+        {service.tools.map((tool, index) => (
+          <span
+            key={index}
+            className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm shadow-sm"
           >
-            {service.cta}
-          </Link>
-        </div>
+            {tool}
+          </span>
+        ))}
       </div>
-    </section>
+
+      <Link
+        to="/contact"
+        className="bg-accent text-white px-6 py-3 rounded-md text-sm font-semibold shadow hover:bg-opacity-90 transition inline-block text-center"
+      >
+        {service.cta}
+      </Link>
+    </div>
   );
 }

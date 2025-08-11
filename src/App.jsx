@@ -3,31 +3,45 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
+import ChatWidget from './components/ChatWidget.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx'; // ✅ Scroll to top on route change
 
 import Home from './pages/Home.jsx';
-import ServicesPage from './pages/Services.jsx';
+import Services from './pages/Services.jsx';              // ✅ Services list page
 import ProjectsPage from './pages/Projects.jsx';
 import ContactPage from './pages/Contact.jsx';
 import AboutPage from './pages/About.jsx';
 import BlogPage from './pages/Blog.jsx';
-import BlogPost from './pages/BlogPost.jsx'; // ✅ New import for dynamic blog pages
+import BlogPost from './pages/BlogPost.jsx';
 import ToolsPage from './pages/Tools.jsx';
 import PricingPage from './pages/Pricing.jsx';
 import ArCardPage from './pages/ArCard.jsx';
 import MarketplacePage from './pages/Marketplace.jsx';
 import DomainSearchPage from './pages/DomainSearch.jsx';
-import ServiceDetail from './pages/ServiceDetail.jsx'; // ✅ Corrected this as well
-import HomeServicesPackage from './pages/HomeServicesPackage.jsx'; // ✅ NEW: Home Services landing page
+import ServiceDetail from './pages/ServiceDetail.jsx';    // ✅ Detail page reads :serviceId
+import HomeServicesPackage from './pages/HomeServicesPackage.jsx';
+
+// ✅ AI Tool page
+import AIToolPage from './pages/AIToolPage.jsx';
+
+// ✅ Google Analytics Tracker
+import Analytics from './Analytics.jsx';
 
 function App() {
   return (
     <Router>
+      <Analytics />
+      <ScrollToTop />
       <Navbar />
       <main className="pt-20 space-y-20">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
+
+          {/* Services */}
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:serviceId" element={<ServiceDetail />} />
+
+          {/* Other pages */}
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -38,10 +52,14 @@ function App() {
           <Route path="/arcard" element={<ArCardPage />} />
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/domains" element={<DomainSearchPage />} />
-          <Route path="/home-services" element={<HomeServicesPackage />} /> {/* ✅ NEW route */}
+          <Route path="/home-services" element={<HomeServicesPackage />} />
+
+          {/* AI Tool */}
+          <Route path="/ai" element={<AIToolPage />} />
         </Routes>
       </main>
       <Footer />
+      <ChatWidget />
     </Router>
   );
 }

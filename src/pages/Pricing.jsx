@@ -18,7 +18,7 @@ const Pricing = () => {
         <InstantQuoteTool />
       </section>
 
-      <section className="grid md:grid-cols-3 gap-8">
+      <section className="grid md:grid-cols-4 gap-8">
         <div className="border p-6 rounded-xl shadow">
           <h3 className="text-2xl font-semibold mb-2">Starter</h3>
           <p className="text-gray-600 mb-4">Basic website setup</p>
@@ -32,7 +32,7 @@ const Pricing = () => {
 
         <div className="border p-6 rounded-xl shadow">
           <h3 className="text-2xl font-semibold mb-2">Pro</h3>
-          <p className="text-gray-600 mb-4">Custom site & branding</p>
+          <p className="text-gray-600 mb-4">Custom site &amp; branding</p>
           <p className="text-3xl font-bold mb-4">$1,200+</p>
           <ul className="text-sm list-disc ml-4">
             <li>5–10 pages</li>
@@ -48,7 +48,18 @@ const Pricing = () => {
           <ul className="text-sm list-disc ml-4">
             <li>Advanced CMS</li>
             <li>Custom backend</li>
-            <li>Support & maintenance</li>
+            <li>Support &amp; maintenance</li>
+          </ul>
+        </div>
+
+        <div className="border p-6 rounded-xl shadow">
+          <h3 className="text-2xl font-semibold mb-2">Twitch Streamer</h3>
+          <p className="text-gray-600 mb-4">Stream overlays &amp; setup</p>
+          <p className="text-3xl font-bold mb-4">$200</p>
+          <ul className="text-sm list-disc ml-4">
+            <li>Custom overlays</li>
+            <li>Alert animations</li>
+            <li>24/7 streaming setup</li>
           </ul>
         </div>
       </section>
