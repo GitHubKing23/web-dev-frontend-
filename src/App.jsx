@@ -21,6 +21,9 @@ import DomainSearchPage from './pages/DomainSearch.jsx';
 import ServiceDetail from './pages/ServiceDetail.jsx';
 import HomeServicesPackage from './pages/HomeServicesPackage.jsx';
 
+// ✅ New import for AI Tool page
+import AIToolPage from './pages/AIToolPage.jsx';
+
 // ✅ Google Analytics Tracker
 import Analytics from './Analytics.jsx';
 
@@ -46,6 +49,9 @@ function App() {
           <Route path="/marketplace" element={<MarketplacePage />} />
           <Route path="/domains" element={<DomainSearchPage />} />
           <Route path="/home-services" element={<HomeServicesPackage />} />
+          
+          {/* ✅ New AI Tool route */}
+          <Route path="/ai" element={<AIToolPage />} />
         </Routes>
       </main>
       <Footer />
