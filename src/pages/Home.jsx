@@ -8,6 +8,7 @@ import Testimonials from '../components/Testimonials.jsx';
 import AITeaser from '../components/AITeaser.jsx';
 import ClosingCTA from '../components/ClosingCTA.jsx';
 import Contact from '../components/Contact.jsx';
+import BlogPreview from '../components/BlogPreview.jsx';
 
 export default function HomePage() {
   return (
@@ -32,6 +33,9 @@ export default function HomePage() {
 
       {/* 7. Promote AI Tool */}
       <AITeaser />
+
+      {/* 7.5. Latest Blog Posts */}
+      <BlogPreview />
 
       {/* 8. Final Call to Action */}
       <ClosingCTA />

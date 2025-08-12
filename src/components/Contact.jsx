@@ -2,7 +2,11 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative bg-light py-20 px-6 font-body overflow-hidden">
+    <section
+      id="contact"
+      className="relative bg-light py-20 px-6 font-body overflow-hidden"
+      data-aos="fade-up"
+    >
       <div className="max-w-2xl mx-auto text-center relative z-10">
         {/* Divider */}
         <div className="w-14 h-1 bg-accent mx-auto mb-6 rounded-full" />
@@ -44,23 +48,6 @@ export default function Contact() {
             />
           </div>
 
-          {/* Experience */}
-          <div>
-            <label className="block text-sm font-semibold mb-2 text-primary">
-              Experience Level
-            </label>
-            <select
-              name="work-experience"
-              required
-              className="w-full border border-muted bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary transition"
-            >
-              <option value="">Select...</option>
-              <option value="one-year">0-1 years</option>
-              <option value="one-five-years">1-5 years</option>
-              <option value="five-plus">5+ years</option>
-            </select>
-          </div>
-
           {/* Message */}
           <div>
             <label className="block text-sm font-semibold mb-2 text-primary">Message</label>
@@ -100,6 +87,19 @@ export default function Contact() {
             </button>
           </div>
         </form>
+
+        <p className="mt-6 text-sm">
+          Prefer to chat?{' '}
+          <a
+            href="https://calendly.com/wise11jeff/webmasterypro-consultation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary underline hover:text-accent"
+          >
+            Book a call
+          </a>
+          .
+        </p>
       </div>
 
       {/* Background Blob */}

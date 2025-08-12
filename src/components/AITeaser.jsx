@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function AITeaser() {
   return (
-    <section className="bg-light py-20 px-6 text-center">
+    <section className="bg-light py-20 px-6 text-center" data-aos="fade-up">
       <h2 className="text-3xl font-heading font-bold text-primary mb-4">
         Discover Our AI Tool
       </h2>
