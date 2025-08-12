@@ -12,15 +12,25 @@ export default defineConfig({
   plugins: [
     react(),
     mdx({
-      include: ['**/*.mdx', '**/*.md'], // ✅ process all MDX & MD files
+      include: ['**/*.mdx', '**/*.md'], // process all MDX & MD files
       remarkPlugins: [
-        remarkFrontmatter, // Parse YAML frontmatter
-        [remarkMdxFrontmatter, { name: 'frontmatter' }], // Attach as `frontmatter` export
+        remarkFrontmatter,
+        [remarkMdxFrontmatter, { name: 'frontmatter' }],
       ],
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom'],
+          aos: ['aos'],
+        },
+      },
+    },
+  },
   server: {
-    host: true, // same as --host 0.0.0.0
+    host: true,           // same as --host 0.0.0.0
     port: 5173,
     allowedHosts: [ALLOWED_HOST],
   },

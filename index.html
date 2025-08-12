@@ -2,23 +2,35 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- ‚úÖ Custom Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon-v2.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>WebMasteryPro</title>
 
-    <!-- ‚úÖ Add Google Font for Elegant Headings -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon-v2.ico" />
+
+    <!-- Performance: speed up font fetching -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Font for Elegant Headings -->
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Optional: helpful meta -->
+    <meta name="theme-color" content="#0ea5e9" />
+    <meta name="description" content="WebMasteryPro ‚Äî modern web design, apps, and AI tools to grow your business." />
+
+    <!-- Optional: Preload your hero image (update the href to your real path) -->
+    <!-- <link rel="preload" as="image" href="/assets/hero-1600.webp" imagesrcset="/assets/hero-800.webp 800w, /assets/hero-1600.webp 1600w" imagesizes="100vw" /> -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
 
-    <!-- ‚úÖ Favicon Debug Script -->
+    <!-- Favicon Debug Script (safe emojis) -->
     <script>
       window.addEventListener('load', () => {
         const favicon = document.querySelector("link[rel~='icon']");
@@ -29,11 +41,11 @@
           img.src = favicon.href;
 
           img.onload = () => {
-            console.log('Ìø¢ Favicon image loaded successfully.');
+            console.log('‚úÖ Favicon image loaded successfully.');
           };
 
           img.onerror = () => {
-            console.error('Ì¥¥ Failed to load favicon image:', favicon.href);
+            console.error('‚ùå Failed to load favicon image:', favicon.href);
           };
         } else {
           console.warn('‚ö†Ô∏è Favicon link tag not found in the document.');

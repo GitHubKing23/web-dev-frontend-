@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import Hero from '../components/Hero.jsx';
 import BusinessNameGenerator from '../components/BusinessNameGenerator.jsx';
 import Services from '../components/Services.jsx';
-import Projects from '../components/Projects.jsx';
 import HowItWorks from '../components/HowItWorks.jsx';
-import Testimonials from '../components/Testimonials.jsx';
-import AITeaser from '../components/AITeaser.jsx';
-import ClosingCTA from '../components/ClosingCTA.jsx';
-import Contact from '../components/Contact.jsx';
-import BlogPreview from '../components/BlogPreview.jsx';
+
+// Lazy-load sections that aren't needed for first paint
+const Projects = lazy(() => import('../components/Projects.jsx'));
+const Testimonials = lazy(() => import('../components/Testimonials.jsx'));
+const AITeaser = lazy(() => import('../components/AITeaser.jsx'));
+const BlogPreview = lazy(() => import('../components/BlogPreview.jsx'));
+const ClosingCTA = lazy(() => import('../components/ClosingCTA.jsx'));
+const Contact = lazy(() => import('../components/Contact.jsx'));
 
 export default function HomePage() {
   return (
@@ -22,26 +24,29 @@ export default function HomePage() {
       {/* 3. What You Offer - Services Overview */}
       <Services />
 
-      {/* 4. Build Trust - Show Past Work */}
-      <Projects />
-
       {/* 5. Explain the Process */}
       <HowItWorks />
 
-      {/* 6. Social Proof */}
-      <Testimonials />
+      {/* Defer everything else to reduce main bundle size */}
+      <Suspense fallback={null}>
+        {/* 4. Build Trust - Show Past Work */}
+        <Projects />
 
-      {/* 7. Promote AI Tool */}
-      <AITeaser />
+        {/* 6. Social Proof */}
+        <Testimonials />
 
-      {/* 7.5. Latest Blog Posts */}
-      <BlogPreview />
+        {/* 7. Promote AI Tool */}
+        <AITeaser />
 
-      {/* 8. Final Call to Action */}
-      <ClosingCTA />
+        {/* 7.5. Latest Blog Posts */}
+        <BlogPreview />
 
-      {/* 9. Convert - Make it Easy to Reach You */}
-      <Contact />
+        {/* 8. Final Call to Action */}
+        <ClosingCTA />
+
+        {/* 9. Convert - Make it Easy to Reach You */}
+        <Contact />
+      </Suspense>
     </>
   );
 }
