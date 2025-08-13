@@ -1,5 +1,6 @@
+// src/pages/Pricing.jsx
 import React from "react";
-import InstantQuoteTool from "../components/InstantQuoteTool";
+import ServicePricingCalculator from "../components/ServicePricingCalculator";
 
 const Pricing = () => {
   return (
@@ -8,14 +9,14 @@ const Pricing = () => {
 
       <section className="mb-12">
         <p className="text-lg text-center max-w-2xl mx-auto">
-          Choose the services you need and get a quick estimate using our instant quote tool below.
+          Choose the services you need and get a quick estimate using our Service Pricing Calculator below.
           <br />
           <strong>Disclaimer:</strong> This is only an estimate. Final pricing depends on project details.
         </p>
       </section>
 
       <section className="mb-16">
-        <InstantQuoteTool />
+        <ServicePricingCalculator />
       </section>
 
       <section className="grid md:grid-cols-4 gap-8">

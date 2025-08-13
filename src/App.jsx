@@ -17,6 +17,7 @@ const AboutPage = lazy(() => import('./pages/About.jsx'));
 const BlogPage = lazy(() => import('./pages/Blog.jsx'));
 const BlogPost = lazy(() => import('./pages/BlogPost.jsx'));
 const ToolsPage = lazy(() => import('./pages/Tools.jsx'));
+const VlogPage = lazy(() => import('./pages/Vlog.jsx'));
 const PricingPage = lazy(() => import('./pages/Pricing.jsx'));
 const ArCardPage = lazy(() => import('./pages/ArCard.jsx'));
 const MarketplacePage = lazy(() => import('./pages/Marketplace.jsx'));
@@ -24,6 +25,7 @@ const DomainSearchPage = lazy(() => import('./pages/DomainSearch.jsx'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail.jsx'));
 const HomeServicesPackage = lazy(() => import('./pages/HomeServicesPackage.jsx'));
 const AIToolPage = lazy(() => import('./pages/AIToolPage.jsx'));
+const InstructionManual = lazy(() => import('./pages/InstructionManual.jsx'));
 
 // Analytics
 import Analytics from './Analytics.jsx';
@@ -67,12 +69,15 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/vlog" element={<VlogPage />} />
             <Route path="/tools" element={<ToolsPage />} />
             <Route path="/pricing" element={<PricingPage />} />
             <Route path="/arcard" element={<ArCardPage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/domains" element={<DomainSearchPage />} />
             <Route path="/home-services" element={<HomeServicesPackage />} />
+
+            <Route path="/manual" element={<InstructionManual />} />
 
             {/* AI Tool */}
             <Route path="/ai" element={<AIToolPage />} />
