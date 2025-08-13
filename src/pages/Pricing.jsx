@@ -1,6 +1,6 @@
 // src/pages/Pricing.jsx
 import React from "react";
-import ServicePricingCalculator from "../components/ServicePricingCalculator";
+import ServicePricingCalculator from "../components/ServicePricingCalculator.jsx";
 
 const Pricing = () => {
   return (

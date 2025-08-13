@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -25,7 +26,8 @@ const DomainSearchPage = lazy(() => import('./pages/DomainSearch.jsx'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail.jsx'));
 const HomeServicesPackage = lazy(() => import('./pages/HomeServicesPackage.jsx'));
 const AIToolPage = lazy(() => import('./pages/AIToolPage.jsx'));
-const InstructionManual = lazy(() => import('./pages/InstructionManual.jsx'));
+const FreeGuidePage = lazy(() => import('./pages/FreeGuide.jsx'));
+const ThankYouPage = lazy(() => import('./pages/ThankYou.jsx'));
 
 // Analytics
 import Analytics from './Analytics.jsx';
@@ -63,7 +65,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
 
-            {/* Other pages */}
+            {/* Core pages */}
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
@@ -77,7 +79,9 @@ function App() {
             <Route path="/domains" element={<DomainSearchPage />} />
             <Route path="/home-services" element={<HomeServicesPackage />} />
 
-            <Route path="/manual" element={<InstructionManual />} />
+            {/* Funnel pages */}
+            <Route path="/free-guide" element={<FreeGuidePage />} />
+            <Route path="/thank-you" element={<ThankYouPage />} />
 
             {/* AI Tool */}
             <Route path="/ai" element={<AIToolPage />} />
