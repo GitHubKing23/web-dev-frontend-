@@ -1,6 +1,7 @@
 // src/App.jsx
 import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
@@ -52,45 +53,47 @@ function App() {
   useDeferredAOS();
 
   return (
-    <Router>
-      <Analytics />
-      <ScrollToTop />
-      <Navbar />
-      <main className="pt-20 space-y-20">
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<Home />} />
+    <HelmetProvider>
+      <Router>
+        <Analytics />
+        <ScrollToTop />
+        <Navbar />
+        <main className="pt-20 space-y-20">
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-            {/* Services */}
-            <Route path="/services" element={<Services />} />
-            <Route path="/services/:serviceId" element={<ServiceDetail />} />
+              {/* Services */}
+              <Route path="/services" element={<Services />} />
+              <Route path="/services/:serviceId" element={<ServiceDetail />} />
 
-            {/* Core pages */}
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/vlog" element={<VlogPage />} />
-            <Route path="/tools" element={<ToolsPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/arcard" element={<ArCardPage />} />
-            <Route path="/marketplace" element={<MarketplacePage />} />
-            <Route path="/domains" element={<DomainSearchPage />} />
-            <Route path="/home-services" element={<HomeServicesPackage />} />
+              {/* Core pages */}
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/vlog" element={<VlogPage />} />
+              <Route path="/tools" element={<ToolsPage />} />
+              <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/arcard" element={<ArCardPage />} />
+              <Route path="/marketplace" element={<MarketplacePage />} />
+              <Route path="/domains" element={<DomainSearchPage />} />
+              <Route path="/home-services" element={<HomeServicesPackage />} />
 
-            {/* Funnel pages */}
-            <Route path="/free-guide" element={<FreeGuidePage />} />
-            <Route path="/thank-you" element={<ThankYouPage />} />
+              {/* Funnel pages */}
+              <Route path="/free-guide" element={<FreeGuidePage />} />
+              <Route path="/thank-you" element={<ThankYouPage />} />
 
-            {/* AI Tool */}
-            <Route path="/ai" element={<AIToolPage />} />
-          </Routes>
-        </Suspense>
-      </main>
-      <Footer />
-      <ChatWidget />
-    </Router>
+              {/* AI Tool */}
+              <Route path="/ai" element={<AIToolPage />} />
+            </Routes>
+          </Suspense>
+        </main>
+        <Footer />
+        <ChatWidget />
+      </Router>
+    </HelmetProvider>
   );
 }
 
