@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Updated import after git mv
+import ironThriveScreenshot from '../../content/images/ironthrive-screenshot-2025-08-13-195715.png';
+
 export default function Projects() {
   return (
     <section id="projects" className="relative bg-white py-20 px-6 font-body overflow-hidden">
@@ -19,6 +22,8 @@ export default function Projects() {
                 src="/assets/sportifyinsider.png"
                 alt="SportifyInsider Screenshot"
                 className="w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -56,9 +61,11 @@ export default function Projects() {
           <div className="md:w-1/2 mb-6 md:mb-0" data-aos="zoom-in">
             <div className="overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-transform hover:scale-[1.02]">
               <img
-                src="/assets/ironthrive-template.svg"
-                alt="IronThrive Screenshot"
-                className="w-full object-cover"
+                src={ironThriveScreenshot}
+                alt="IronThrive project screenshot"
+                className="w-full object-cover aspect-[16/9]"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
