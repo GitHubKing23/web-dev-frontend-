@@ -5,8 +5,6 @@ author: "WebMasteryPro Team"
 category: "Web Development"
 description: "Discover the top website mistake costing U.S. small businesses customers—and how to fix it fast. Learn seven proven website design tips to improve SEO, speed, and conversions."
 ---
-import LiteYouTube from "../../src/components/LiteYouTube";
-
 
 import SEO from "../../src/components/SEO";
 import hero from "../images/Blogimageone.png";
@@ -49,7 +47,15 @@ A recent report found **88% of visitors won’t return after a bad experience**.
 ### 🎥 7 Website Design Tips for Small Businesses
 
 <figure>
-  <LiteYouTube id="kvcEhzoipZs" title="YouTube video" />
+  <iframe
+    width="100%"
+    height="450"
+    src="https://www.youtube.com/embed/kvcEhzoipZs"
+    title="7 Website Design Tips for Small Businesses — Improve Your Online Presence, SEO, and Conversions"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  ></iframe>
   <figcaption>
     Video guide: seven practical website design tips to build a professional, high-converting, mobile-first site with stronger SEO.
   </figcaption>

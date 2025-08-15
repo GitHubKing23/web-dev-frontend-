@@ -6,11 +6,13 @@
   "main": "index.jsx",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run sitemap && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "analyze": "node seo-speed-analyzer.mjs",
-    "test": "jest"
+    "test": "jest",
+    "sitemap": "node scripts/generate-sitemap.mjs",
+    "fix:youtube": "node scripts/replace-youtube.mjs"
   },
   "keywords": [],
   "author": "",
