@@ -3,6 +3,7 @@ import Hero from '../components/Hero.jsx';
 import BusinessNameGenerator from '../components/BusinessNameGenerator.jsx';
 import Services from '../components/Services.jsx';
 import HowItWorks from '../components/HowItWorks.jsx';
+import { Helmet } from 'react-helmet-async';
 
 // Lazy-load sections that aren't needed for first paint
 const Projects = lazy(() => import('../components/Projects.jsx'));
@@ -13,8 +14,51 @@ const ClosingCTA = lazy(() => import('../components/ClosingCTA.jsx'));
 const Contact = lazy(() => import('../components/Contact.jsx'));
 
 export default function HomePage() {
+  const site = 'https://webmasterypro.com';
+  const title = 'WebMasteryPro — SEO-Friendly Web Development that Gets You Found';
+  const description =
+    'We build and optimize fast, SEO-friendly websites for small businesses. Better rankings, faster load times, and more conversions.';
+  const ogImage = '/content/images/wmp-logo.png'; // ✅ new logo
+
   return (
     <>
+      {/* SEO head tags */}
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`${site}/`} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={`${site}/`} />
+        <meta property="og:image" content={`${site}${ogImage}`} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={`${site}${ogImage}`} />
+
+        {/* Theme color */}
+        <meta name="theme-color" content="#2563eb" />
+
+        {/* Organization JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "WebMasteryPro",
+            "url": site,
+            "logo": `${site}${ogImage}`,
+            "sameAs": [
+              "https://www.facebook.com/profile.php?id=61576399047285"
+            ]
+          })}
+        </script>
+      </Helmet>
+
       {/* 1. First Impression - Strong CTA */}
       <Hero />
 
