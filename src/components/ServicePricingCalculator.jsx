@@ -79,7 +79,6 @@ export default function ServicePricingCalculator({
   addons = DEFAULT_ADDONS,
   currency = '$',
   className = '',
-  onSubmit, // optional, kept for compatibility
   ctaHref = 'https://calendly.com/wise11jeff/webmasterypro-consultation?utm_source=pricing&utm_medium=calculator&utm_campaign=book_consultation',
 }) {
   // Default to Professional if present
