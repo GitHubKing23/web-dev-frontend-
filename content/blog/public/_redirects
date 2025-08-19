@@ -1,3 +1,4 @@
 # Redirect messy spaced URLs to new SEO-friendly slugs
 /blog/How%20AI%20Tools%20Are%20Helping%20Small%20Businesses%20&%20Twitch%20Streamers%20Dominate%20in%202025   /blog/ai-tools-small-business-twitch-2025   301
 /blog/How%20AI%20Tools%20Using%20GPU%20Power%20Are%20Boosting%20Business%20Growth   /blog/ai-tools-gpu-business-growth   301
+/*   /index.html   200
