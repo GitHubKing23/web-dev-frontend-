@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion as Motion, useReducedMotion } from 'framer-motion';
 
 export default function Footer() {
   const year = new Date().getFullYear();
   const prefersReducedMotion = useReducedMotion();
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src =
+      'https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209.js';
+    script.async = true;
+    script.dataset.form = '63fb8066-7971-11f0-bd12-1922c845d209';
+    if (formRef.current) {
+      formRef.current.innerHTML = '';
+      formRef.current.appendChild(script);
+    }
+    return () => {
+      if (formRef.current) {
+        formRef.current.innerHTML = '';
+      }
+    };
+  }, []);
 
   const navLinks = [
     { label: 'Home', to: '/' },
@@ -69,7 +87,7 @@ export default function Footer() {
       </div>
 
       {/* Newsletter Signup Form Section (animated) */}
-      <motion.div
+      <Motion.div
         className="bg-gradient-to-r from-primary to-accent text-white py-12 px-4 text-center"
         initial="hidden"
         whileInView="show"
@@ -82,7 +100,7 @@ export default function Footer() {
             Get bite-sized tips on SEO-friendly web development, straight to your inbox.
           </p>
 
-          <motion.div
+          <Motion.div
             className="bg-white p-4 rounded-lg shadow-md"
             initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -90,12 +108,8 @@ export default function Footer() {
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
           >
             {/* EmailOctopus inline form script */}
-            <script
-              async
-              src="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209.js"
-              data-form="63fb8066-7971-11f0-bd12-1922c845d209"
-            ></script>
-          </motion.div>
+            <div ref={formRef} />
+          </Motion.div>
 
           {/* Optional no-JS fallback */}
           <noscript>
@@ -112,7 +126,7 @@ export default function Footer() {
             </p>
           </noscript>
         </div>
-      </motion.div>
+      </Motion.div>
 
       {/* Bottom Bar */}
       <div className="border-t border-muted py-4 text-center text-xs text-gray-500">
