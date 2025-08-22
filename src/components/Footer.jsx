@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 export default function Footer() {
   const year = new Date().getFullYear();
   const prefersReducedMotion = useReducedMotion();
+  const MotionDiv = motion.div;
 
   const navLinks = [
     { label: 'Home', to: '/' },
@@ -31,17 +32,13 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t border-muted font-body text-text text-sm">
-      <div className="max-w-6xl mx-auto px-4 py-12 flex flex-col items-center justify-center space-y-6 text-center md:flex-row md:justify-between md:text-left md:space-y-0">
-        {/* Logo & Brand Name */}
-        <div className="flex items-center gap-2">
-          <span className="text-xl font-heading font-bold text-primary">WebMasteryPro</span>
-        </div>
-
-        {/* Navigation */}
-        <div className="flex flex-wrap items-center gap-4 justify-center text-sm">
-          {navLinks.map((link) => (
-            <Link key={link.label} to={link.to} className="hover:text-accent transition">
-              {link.label}
+      {/* Top Section */}
+      <div className="max-w-6xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        {/* Nav Links */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {navLinks.map((l) => (
+            <Link key={l.to} to={l.to} className="hover:text-accent transition">
+              {l.label}
             </Link>
           ))}
           <a
@@ -68,12 +65,12 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Newsletter Signup Form Section (animated) */}
-      <motion.div
+      {/* Newsletter Signup Form Section (iframe embed = no typing issues) */}
+      <MotionDiv
         className="bg-gradient-to-r from-primary to-accent text-white py-12 px-4 text-center"
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: '0px 0px -80px 0px' }} // trigger slightly before fully in view
+        viewport={{ once: true, margin: '0px 0px -80px 0px' }}
         variants={containerVariants}
       >
         <div className="max-w-3xl mx-auto">
@@ -82,37 +79,44 @@ export default function Footer() {
             Get bite-sized tips on SEO-friendly web development, straight to your inbox.
           </p>
 
-          <motion.div
-            className="bg-white p-4 rounded-lg shadow-md"
+          <MotionDiv
+            className="bg-white p-0 rounded-lg shadow-md overflow-hidden"
             initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
           >
-            {/* EmailOctopus inline form script */}
-            <script
-              async
-              src="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209.js"
-              data-form="63fb8066-7971-11f0-bd12-1922c845d209"
-            ></script>
-          </motion.div>
+            {/* Replace src with your hosted form URL if different */}
+            <iframe
+              title="Newsletter signup"
+              src="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209"
+              className="w-full"
+              style={{ border: 0 }}
+              width="100%"
+              height="420"
+              frameBorder="0"
+              scrolling="no"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowTransparency={true}
+            />
+          </MotionDiv>
 
-          {/* Optional no-JS fallback */}
-          <noscript>
-            <p className="mt-4 text-white/80">
-              JavaScript is required to load the signup form. Please{' '}
-              <a
-                className="underline font-semibold"
-                href="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                sign up here
-              </a>.
-            </p>
-          </noscript>
+          {/* No-JS Fallback / Direct link */}
+          <p className="mt-4 text-white/80">
+            Prefer a new tab?{' '}
+            <a
+              className="underline font-semibold"
+              href="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open the signup form
+            </a>
+            .
+          </p>
         </div>
-      </motion.div>
+      </MotionDiv>
 
       {/* Bottom Bar */}
       <div className="border-t border-muted py-4 text-center text-xs text-gray-500">
