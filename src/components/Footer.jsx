@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
@@ -6,6 +6,40 @@ import { motion, useReducedMotion } from 'framer-motion';
 export default function Footer() {
   const year = new Date().getFullYear();
   const prefersReducedMotion = useReducedMotion();
+  const formContainerRef = useRef(null);
+  const MotionDiv = motion.div;
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src =
+      'https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209.js';
+    script.async = true;
+    script.dataset.form = '63fb8066-7971-11f0-bd12-1922c845d209';
+
+    const handleLoad = () => {
+      console.log('✅ Newsletter form script loaded successfully.');
+    };
+
+    const handleError = (e) => {
+      console.error('❌ Failed to load newsletter form script:', e);
+    };
+
+    script.addEventListener('load', handleLoad);
+    script.addEventListener('error', handleError);
+
+    const container = formContainerRef.current;
+    if (container) {
+      container.appendChild(script);
+    }
+
+    return () => {
+      script.removeEventListener('load', handleLoad);
+      script.removeEventListener('error', handleError);
+      if (container) {
+        container.innerHTML = '';
+      }
+    };
+  }, []);
 
   const navLinks = [
     { label: 'Home', to: '/' },
@@ -69,7 +103,7 @@ export default function Footer() {
       </div>
 
       {/* Newsletter Signup Form Section (animated) */}
-      <motion.div
+      <MotionDiv
         className="bg-gradient-to-r from-primary to-accent text-white py-12 px-4 text-center"
         initial="hidden"
         whileInView="show"
@@ -82,20 +116,16 @@ export default function Footer() {
             Get bite-sized tips on SEO-friendly web development, straight to your inbox.
           </p>
 
-          <motion.div
+          <MotionDiv
             className="bg-white p-4 rounded-lg shadow-md"
             initial={{ opacity: 0, scale: prefersReducedMotion ? 1 : 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: 'easeOut', delay: 0.1 }}
           >
-            {/* EmailOctopus inline form script */}
-            <script
-              async
-              src="https://eocampaign1.com/form/63fb8066-7971-11f0-bd12-1922c845d209.js"
-              data-form="63fb8066-7971-11f0-bd12-1922c845d209"
-            ></script>
-          </motion.div>
+            {/* Container for EmailOctopus form script */}
+            <div id="newsletter-form" ref={formContainerRef}></div>
+          </MotionDiv>
 
           {/* Optional no-JS fallback */}
           <noscript>
@@ -112,7 +142,7 @@ export default function Footer() {
             </p>
           </noscript>
         </div>
-      </motion.div>
+      </MotionDiv>
 
       {/* Bottom Bar */}
       <div className="border-t border-muted py-4 text-center text-xs text-gray-500">
